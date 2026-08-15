@@ -1,0 +1,88 @@
+# ==============================================================
+# robots.txt — russianspacenter.com
+# Updated: 2026-07-27
+# ==============================================================
+
+# ---------------------------------------------------------------
+# Allow ALL major search engine crawlers
+# ---------------------------------------------------------------
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# ---------------------------------------------------------------
+# Global rules (all other crawlers)
+# ---------------------------------------------------------------
+User-agent: *
+Allow: /
+
+# Block internal Next.js system paths — not useful for SEO
+Disallow: /_next/
+Disallow: /api/
+Disallow: /_error
+Disallow: /404
+Disallow: /500
+
+# Block any admin, dashboard, or private paths (add yours here)
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /private/
+
+# Block duplicate query-string URLs that could cause thin content
+Disallow: /*?*utm_source=
+Disallow: /*?*utm_medium=
+Disallow: /*?*utm_campaign=
+Disallow: /*?*ref=
+Disallow: /*?*fbclid=
+Disallow: /*?*gclid=
+
+# Allow crawling of all static assets needed for rendering
+Allow: /_next/static/
+Allow: /images/
+Allow: /icons/
+Allow: /fonts/
+Allow: /*.css
+Allow: /*.js
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.png
+Allow: /*.webp
+Allow: /*.svg
+Allow: /*.gif
+
+# ---------------------------------------------------------------
+# Crawl delay (optional — helps avoid server overload)
+# Note: Googlebot ignores Crawl-delay; this affects others only
+# ---------------------------------------------------------------
+Crawl-delay: 10
+
+# ---------------------------------------------------------------
+# Sitemap location
+# ---------------------------------------------------------------
+Sitemap: https://russianspacenter.com/sitemap.xml
