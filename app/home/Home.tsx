@@ -24,7 +24,6 @@ import {
 } from "lucide-react";
 import TherapistSection from "../components/TherapistSection";
 import FaqAccordion from "../components/FaqAccordion";
-import AlsoVisit from "../components/AlsoVisit";
 import styles from "./Home.module.css";
 import Img from "../components/Img";
 import { DIRECTIONS_URL, PHONE_DISPLAY, PHONE_E164, waLink } from "../lib/site";
@@ -102,10 +101,10 @@ const HERO_STATS = [
 
 const GALLERY_PREVIEW = [
   { src: "/home_images/mahipalpurspa4.jpg", alt: "Treatment room at Russian Spa Centre, Mahipalpur" },
-  { src: "/home_images/mahipalpurspa7.jpg", alt: "Massage table prepared with fresh linen" },
-  { src: "/home_images/mahipalpurspa10.jpg", alt: "Relaxation lounge at our Mahipalpur spa" },
-  { src: "/home_images/mahipalpurspa11.jpg", alt: "Russian Banya steam room interior" },
-  { src: "/home_images/mahipalpurspa12.jpg", alt: "Aromatherapy oils and spa amenities" },
+  { src: "/home_images/mahipalpurspa7.jpg", alt: "Massage table prepared with fresh linen at Russian Spa Centre, Mahipalpur" },
+  { src: "/home_images/mahipalpurspa10.jpg", alt: "Relaxation lounge at Russian Spa Centre, Mahipalpur" },
+  { src: "/home_images/mahipalpurspa11.jpg", alt: "Russian Banya steam room at Russian Spa Centre, Mahipalpur" },
+  { src: "/home_images/mahipalpurspa12.jpg", alt: "Aromatherapy oils and spa amenities at Russian Spa Centre, Mahipalpur" },
   { src: "/home_images/mahipalpurspa16.jpg", alt: "Private couples suite at Russian Spa Centre" },
 ];
 
@@ -183,7 +182,7 @@ export default function Home() {
             <figure className={styles.heroFrameAlt}>
               <Img
                 src="/home_images/mahipalpurspa13.jpg"
-                alt="Therapist preparing warm oils before a massage session"
+                alt="Therapist preparing warm oils at Russian Spa Centre, Mahipalpur"
                 width={320}
                 height={320}
                 loading="lazy"
@@ -444,7 +443,6 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={"/"} />
 
       <section className={styles.ctaSection}>
         <div data-reveal>

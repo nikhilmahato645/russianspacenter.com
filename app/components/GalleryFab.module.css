@@ -1,0 +1,70 @@
+/* ============================================================================
+   GALLERY SHORTCUT — bottom-left floating pill, phones and tablets only.
+
+   Sits opposite the call / WhatsApp stack and one step lower in the stacking
+   order (999 against their 1000), so it can never cover them. It hides above
+   1000px, where the gallery is one click away in the navbar.
+   ========================================================================== */
+
+.fab {
+  position: fixed;
+  left: 16px;
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 15px 7px 7px;
+  border-radius: var(--r-pill);
+  background: var(--dark);
+  color: #fff;
+  border: 1px solid rgb(var(--gold-rgb) / 0.45);
+  box-shadow: 0 8px 24px rgb(var(--ink-rgb) / 0.28);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease);
+}
+
+.fab:hover {
+  background: var(--dark-2);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 32px rgb(var(--ink-rgb) / 0.34);
+}
+
+.fab:active {
+  transform: scale(0.97);
+}
+
+/* Gold disc behind the icon — the same lotus-on-cypress pairing as the logo,
+   so the shortcut reads as part of the brand and not as a chat widget. */
+.icon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgb(var(--gold-rgb) / 0.16);
+  border: 1px solid rgb(var(--gold-rgb) / 0.4);
+  color: var(--gold-bright);
+}
+
+.label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+@media (min-width: 1000px) {
+  .fab {
+    display: none;
+  }
+}
+
+/* Reduced-motion users still get the colour change, just not the lift. */
+@media (prefers-reduced-motion: reduce) {
+  .fab:hover {
+    transform: none;
+  }
+}

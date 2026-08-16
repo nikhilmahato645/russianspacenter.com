@@ -13,7 +13,7 @@ export const HAUZ_KHAS: LocationContent = {
   areaName: "Hauz Khas",
   breadcrumb: "Spa in Hauz Khas",
 
-  heroImage: "/home_images/mahipalpurspa10.jpg",
+  heroImage: "/Rawimages/russianspacenterimage14.webp",
   heroBadge: "22 Minutes Down The Outer Ring Road",
   h1: { lead: "Best Spa & Body Massage near", em: "Hauz Khas" },
   heroText: [

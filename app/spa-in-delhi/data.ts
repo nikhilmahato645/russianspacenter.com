@@ -14,7 +14,7 @@ export const DELHI: LocationContent = {
   areaServedName: "Delhi NCR",
   containedInCity: "Delhi",
 
-  heroImage: "/home_images/mahipalpurspa2.jpg",
+  heroImage: "/Rawimages/russianspacenterimage10.webp",
   heroBadge: "Delhi's Russian Banya · Open 24 Hours, 365 Days",
   h1: { lead: "Best Spa & Body Massage in", em: "Delhi" },
   heroText: [

@@ -15,7 +15,7 @@ export const DWARKA: LocationContent = {
   areaName: "Dwarka",
   breadcrumb: "Spa in Dwarka",
 
-  heroImage: "/home_images/mahipalpurspa8.jpg",
+  heroImage: "/Rawimages/russianspacenterimage11.webp",
   heroBadge: "Serving Dwarka Sectors 1–24 · Open 24 Hours",
   h1: { lead: "Best Spa & Body Massage for", em: "Dwarka" },
   heroText: [

@@ -21,7 +21,6 @@ import {
   PHONE_E164,
   waLink,
 } from "../lib/site";
-import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { AREAS, HOTELS, LOCATION_FAQS } from "./data";
 import Img from "../components/Img";
@@ -60,7 +59,7 @@ export default function Locations() {
       <section className={styles.hero}>
         <div
           className={styles.heroImage}
-          style={{ backgroundImage: "url('/spa-in-mahipalpur/image1.jpg')" }}
+          style={{ backgroundImage: "url('/Rawimages/russianspacenterimage4.webp')" }}
         />
         <div className={styles.heroScrim} />
         <div className={styles.heroContent}>
@@ -114,6 +113,7 @@ export default function Locations() {
           {AREAS.map((area, i) => (
             <article
               key={area.slug}
+              id={area.slug}
               className={`${styles.iconCard} ${styles.iconCardLeft}`}
               data-reveal
               data-reveal-delay={(i % 3) * 90}
@@ -304,7 +304,6 @@ export default function Locations() {
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={"/locations/"} />
 
       <section className={styles.ctaSection}>
         <div data-reveal>

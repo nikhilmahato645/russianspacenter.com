@@ -25,7 +25,6 @@ import {
 import Breadcrumb from "../components/Breadcrumb";
 import FaqAccordion from "../components/FaqAccordion";
 import { PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL, waLink } from "../lib/site";
-import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { SERVICE_FAQS } from "./data";
 
@@ -213,7 +212,7 @@ export default function Services() {
       <section className={styles.hero}>
         <div
           className={styles.heroImage}
-          style={{ backgroundImage: "url('/home_images/mahipalpurspa2.jpg')" }}
+          style={{ backgroundImage: "url('/Rawimages/russianspacenterimage1.webp')" }}
         />
         <div className={styles.heroScrim} />
         <div className={styles.heroContent}>
@@ -424,7 +423,6 @@ export default function Services() {
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={"/services/"} />
 
       <section className={styles.ctaSection}>
         <div data-reveal>

@@ -11,7 +11,7 @@ export const VASANT_KUNJ: LocationContent = {
   areaName: "Vasant Kunj",
   breadcrumb: "Spa in Vasant Kunj",
 
-  heroImage: "/home_images/mahipalpurspa6.jpg",
+  heroImage: "/Rawimages/russianspacenterimage12.webp",
   heroBadge: "Twelve Minutes From The Vasant Kunj Malls",
   h1: { lead: "Best Spa & Body Massage for", em: "Vasant Kunj" },
   heroText: [

@@ -13,7 +13,6 @@ import {
 import Breadcrumb from "../components/Breadcrumb";
 import FaqAccordion from "../components/FaqAccordion";
 import { PHONE_DISPLAY, PHONE_E164, waLink } from "../lib/site";
-import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { OFFERS, PACKAGES, PRICING_FAQS, RATE_GROUPS } from "./data";
 
@@ -41,7 +40,7 @@ export default function Pricing() {
       <section className={styles.hero}>
         <div
           className={styles.heroImage}
-          style={{ backgroundImage: "url('/home_images/mahipalpurspa7.jpg')" }}
+          style={{ backgroundImage: "url('/Rawimages/russianspacenterimage2.webp')" }}
         />
         <div className={styles.heroScrim} />
         <div className={styles.heroContent}>
@@ -257,7 +256,6 @@ export default function Pricing() {
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={"/pricing/"} />
 
       <section className={styles.ctaSection}>
         <div data-reveal>

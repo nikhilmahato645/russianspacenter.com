@@ -8,7 +8,7 @@ const PATH = "/gallery/";
 export const metadata: Metadata = {
   title: "Photo Gallery | Russian Spa Centre, Mahipalpur",
   description:
-    "Photographs taken inside our Mahipalpur premises — the Russian Banya, private treatment rooms, couples suites and the relaxation lounge.",
+    "Photographs of our Mahipalpur premises — the Russian Banya, private treatment rooms and relaxation lounge — plus portraits of the therapists who work here.",
   robots: {
     index: true,
     follow: true,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Spa Photo Gallery | Russian Spa Centre Mahipalpur",
-    description: "Russian Banya, private treatment rooms and lounge — real photos, no stock imagery.",
+    description: "Russian Banya, private treatment rooms, relaxation lounge and our therapists.",
     images: [`${SITE_URL}${SHOTS[0].src}`],
   },
   alternates: {

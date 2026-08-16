@@ -14,7 +14,9 @@
 /* ================================ BASE ================================ */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-h) + 20px);
+  /* Must clear the whole fixed header, utility strip included — otherwise an
+     anchor jump (#faq, #services) lands the heading underneath the bar. */
+  scroll-padding-top: calc(var(--nav-h) + var(--topbar-h) + 20px);
   -webkit-text-size-adjust: 100%;
 }
 
@@ -972,6 +974,36 @@ footer::before {
 .footer-bottom p {
   font-size: 0.74rem;
   color: rgb(255 255 255 / 0.62);
+}
+
+/* Sister-site line — a block on its own row under the copyright on phones,
+   inline after a gold divider once there is width for it. */
+.footer-partner {
+  display: block;
+  margin-top: 8px;
+}
+
+.footer-partner a {
+  color: var(--gold-bright);
+  border-bottom: 1px solid rgb(var(--gold-rgb) / 0.4);
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.footer-partner a:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 560px) {
+  .footer-partner {
+    display: inline;
+    margin-top: 0;
+  }
+  .footer-partner::before {
+    content: '·';
+    color: var(--gold);
+    margin: 0 8px;
+  }
 }
 
 .footer-badge {

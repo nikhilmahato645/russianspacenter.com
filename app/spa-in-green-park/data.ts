@@ -13,7 +13,7 @@ export const GREEN_PARK: LocationContent = {
   areaName: "Green Park",
   breadcrumb: "Spa in Green Park",
 
-  heroImage: "/home_images/mahipalpurspa6.jpg",
+  heroImage: "/Rawimages/russianspacenterimage15.webp",
   heroBadge: "The Shortest South Delhi Run To Us · 20 Minutes",
   h1: { lead: "Best Spa & Body Massage near", em: "Green Park" },
   heroText: [

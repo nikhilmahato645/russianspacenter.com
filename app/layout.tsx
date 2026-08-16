@@ -6,9 +6,14 @@ import { MapPin, Phone, Mail, Clock, Sparkles, MessageCircle, ArrowUpRight } fro
 import Navbar from "./components/Navbar";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Reveal from "./components/Reveal";
+import PartnerBand from "./components/PartnerBand";
+import GalleryFab from "./components/GalleryFab";
 import {
   EMAIL,
   LOCAL_BUSINESS,
+  PARTNER_HOST,
+  PARTNER_NAME,
+  PARTNER_URL,
   PHONE_DISPLAY,
   PHONE_E164,
   SITE_HOST,
@@ -177,12 +182,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             className="floating-btn btn-whatsapp"
             aria-label="Chat on WhatsApp"
           >
-            <Img src="/call_whatshap/whatshap.png" alt="Chat on WhatsApp" />
+            <Img src="/call_whatshap/whatshap.png" alt="Chat with Russian Spa Centre on WhatsApp" />
           </a>
           <a href={`tel:${PHONE_E164}`} className="floating-btn btn-call" aria-label="Call Now">
-            <Img src="/call_whatshap/call.png" alt="Call Now" />
+            <Img src="/call_whatshap/call.png" alt="Call Russian Spa Centre, Mahipalpur" />
           </a>
         </div>
+
+        {/* Gallery shortcut — bottom-left on phones, opposite the call stack. */}
+        <GalleryFab />
+
+        {/* Sister-site cross-promotion — resolves to the counterpart of
+            whichever route is on screen. */}
+        <PartnerBand />
 
         <footer>
           <div className="footer-inner">
@@ -251,7 +263,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 internal links above do the same job honestly. */}
 
             <div className="footer-bottom">
-              <p>© 2026 Russian Spa Centre · {SITE_HOST} · All rights reserved</p>
+              <p>
+                © 2026 Russian Spa Centre · {SITE_HOST} · All rights reserved
+                <span className="footer-partner">
+                  Also visit{" "}
+                  <a href={`${PARTNER_URL}/`} target="_blank" rel="noopener" title={PARTNER_NAME}>
+                    {PARTNER_HOST}
+                  </a>
+                </span>
+              </p>
               <span className="footer-badge">
                 <Sparkles size={12} /> 15% OFF FIRST VISIT · OPEN 24/7
               </span>

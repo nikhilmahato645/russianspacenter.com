@@ -12,7 +12,7 @@ export const MAHIPALPUR: LocationContent = {
   areaName: "Mahipalpur",
   breadcrumb: "Spa in Mahipalpur",
 
-  heroImage: "/home_images/mahipalpurspa14.jpg",
+  heroImage: "/Rawimages/russianspacenterimage8.webp",
   heroBadge: "Our Premises · Defence Enclave, Open 24 Hours",
   h1: { lead: "Best Body Massage &", em: "Spa in Mahipalpur" },
   heroText: [

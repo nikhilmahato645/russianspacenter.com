@@ -21,6 +21,109 @@ export const SITE_HOST = SITE_URL.replace(/^https?:\/\//, "");
 
 export const BUSINESS_NAME = "Russian Spa Centre";
 
+/* ===========================================================================
+   SISTER SITE — mahipalpurspaservicecentre.com
+   Run by the same business (it is also the domain on EMAIL below). Every page
+   here points at its counterpart there, so a visitor reading our price list is
+   offered their price list rather than being dumped on their home page.
+   ========================================================================= */
+
+export const PARTNER_URL = "https://mahipalpurspaservicecentre.com";
+export const PARTNER_HOST = PARTNER_URL.replace(/^https?:\/\//, "");
+export const PARTNER_NAME = "Mahipalpur Spa Service Centre";
+
+export type PartnerLink = { href: string; label: string };
+
+const partner = (path: string, label: string): PartnerLink => ({
+  href: `${PARTNER_URL}${path}`,
+  label,
+});
+
+/**
+ * Pages the sister site has that this one does not — the treatment-led landing
+ * pages. These are the ones worth featuring, since they add something rather
+ * than duplicating a page the visitor is already on.
+ */
+export const PARTNER_FEATURES: PartnerLink[] = [
+  partner("/russian-spa-mahipalpur/", "Russian Spa Mahipalpur"),
+  partner("/russian-spa-aerocity/", "Russian Spa Aerocity"),
+  partner("/russian-banya-delhi/", "Russian Banya Delhi"),
+  partner("/body-massage-mahipalpur/", "Body Massage Mahipalpur"),
+  partner("/body-massage-aerocity/", "Body Massage Aerocity"),
+  partner("/body-massage-vasant-kunj/", "Body Massage Vasant Kunj"),
+  partner("/couple-spa-delhi/", "Couple Spa Delhi"),
+];
+
+/**
+ * Route-for-route counterpart. Saket, Hauz Khas and Green Park have no page on
+ * the sister site, so they fall through to its Delhi page — the nearest thing
+ * to a match rather than a dead end.
+ */
+const PARTNER_ROUTES: Record<string, PartnerLink> = {
+  "/": partner("/", "Home"),
+  "/services/": partner("/services/", "Services"),
+  "/pricing/": partner("/pricing/", "Price List"),
+  "/gallery/": partner("/gallery/", "Gallery"),
+  "/locations/": partner("/locations/", "Locations"),
+  "/about/": partner("/about/", "About"),
+  "/contact/": partner("/contact/", "Contact & Booking"),
+  "/spa-in-mahipalpur/": partner("/spa-in-mahipalpur/", "Spa in Mahipalpur"),
+  "/spa-in-aerocity/": partner("/spa-in-aerocity/", "Spa in Aerocity"),
+  "/spa-in-vasant-kunj/": partner("/spa-in-vasant-kunj/", "Spa in Vasant Kunj"),
+  "/spa-in-dwarka/": partner("/spa-in-dwarka/", "Spa in Dwarka"),
+  "/spa-in-gurugram/": partner("/spa-in-gurugram/", "Spa in Gurugram"),
+  "/spa-in-karol-bagh/": partner("/spa-in-karol-bagh/", "Spa in Karol Bagh"),
+  "/spa-in-delhi/": partner("/spa-in-delhi/", "Spa in Delhi"),
+  "/spa-in-saket/": partner("/spa-in-delhi/", "Spa in Delhi"),
+  "/spa-in-hauz-khas/": partner("/spa-in-delhi/", "Spa in Delhi"),
+  "/spa-in-green-park/": partner("/spa-in-delhi/", "Spa in Delhi"),
+};
+
+/** Treatment pages that belong with a given area page. */
+const PARTNER_RELATED: Record<string, PartnerLink[]> = {
+  "/spa-in-mahipalpur/": [
+    partner("/russian-spa-mahipalpur/", "Russian Spa Mahipalpur"),
+    partner("/body-massage-mahipalpur/", "Body Massage Mahipalpur"),
+    partner("/russian-banya-delhi/", "Russian Banya Delhi"),
+  ],
+  "/spa-in-aerocity/": [
+    partner("/russian-spa-aerocity/", "Russian Spa Aerocity"),
+    partner("/body-massage-aerocity/", "Body Massage Aerocity"),
+    partner("/couple-spa-delhi/", "Couple Spa Delhi"),
+  ],
+  "/spa-in-vasant-kunj/": [
+    partner("/body-massage-vasant-kunj/", "Body Massage Vasant Kunj"),
+    partner("/russian-spa-mahipalpur/", "Russian Spa Mahipalpur"),
+    partner("/couple-spa-delhi/", "Couple Spa Delhi"),
+  ],
+  "/spa-in-delhi/": [
+    partner("/russian-banya-delhi/", "Russian Banya Delhi"),
+    partner("/couple-spa-delhi/", "Couple Spa Delhi"),
+    partner("/russian-spa-mahipalpur/", "Russian Spa Mahipalpur"),
+  ],
+};
+
+const PARTNER_RELATED_DEFAULT: PartnerLink[] = [
+  partner("/russian-spa-mahipalpur/", "Russian Spa Mahipalpur"),
+  partner("/russian-banya-delhi/", "Russian Banya Delhi"),
+  partner("/couple-spa-delhi/", "Couple Spa Delhi"),
+];
+
+/**
+ * Resolves a pathname to its sister-site counterpart plus three treatment
+ * pages worth showing beside it. Unknown paths fall back to the home page, so
+ * a route added later still renders something sensible.
+ */
+export function partnerFor(pathname: string) {
+  const path = pathname.endsWith("/") ? pathname : `${pathname}/`;
+  return {
+    match: PARTNER_ROUTES[path] ?? PARTNER_ROUTES["/"],
+    related: PARTNER_RELATED[path] ?? PARTNER_RELATED_DEFAULT,
+    /** Home already gets the full feature list, so it skips the short one. */
+    isHome: path === "/",
+  };
+}
+
 export const PHONE_DISPLAY = "+91 8929979542";
 export const PHONE_E164 = "+918929979542";
 /** Digits only, for wa.me deep links. Same line as the phone. */
@@ -146,6 +249,9 @@ export const LOCAL_BUSINESS = {
       addressCountry: "IN",
     })),
   ],
+  /* Declares the sister site as the same business rather than leaving two
+     unrelated-looking spas at one Mahipalpur address. */
+  sameAs: [`${PARTNER_URL}/`],
 } as const;
 
 /**
@@ -198,6 +304,7 @@ export const ORGANIZATION_LD = {
     postalCode: ADDRESS.postalCode,
     addressCountry: ADDRESS.country,
   },
+  sameAs: [`${PARTNER_URL}/`],
 } as const;
 
 /** BreadcrumbList for an inner page — Home › <label>. */

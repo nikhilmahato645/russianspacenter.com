@@ -11,7 +11,7 @@ export const AEROCITY: LocationContent = {
   areaName: "Aerocity",
   breadcrumb: "Spa in Aerocity",
 
-  heroImage: "/home_images/mahipalpurspa12.jpg",
+  heroImage: "/Rawimages/russianspacenterimage9.webp",
   heroBadge: "Five Minutes From The Aerocity Hotel Strip",
   h1: { lead: "Best Spa & Body Massage in", em: "Aerocity" },
   heroText: [

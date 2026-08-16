@@ -32,8 +32,9 @@ import {
   Navigation,
   ArrowRight,
 } from "lucide-react";
-import AlsoVisit from "./AlsoVisit";
 import Breadcrumb from "./Breadcrumb";
+import TherapistSection from "./TherapistSection";
+import { areaTherapistsFor } from "../lib/area-therapists";
 import FaqAccordion from "./FaqAccordion";
 import {
   ADDRESS,
@@ -43,7 +44,7 @@ import {
   PHONE_E164,
   waLink,
 } from "../lib/site";
-import { relatedAreas, type IconKey, type LocationContent } from "../lib/location";
+import { hubAnchorFor, relatedAreas, type IconKey, type LocationContent } from "../lib/location";
 import styles from "../styles/page.module.css";
 
 /**
@@ -133,6 +134,8 @@ export default function LocationPage({ content }: { content: LocationContent }) 
   } = content;
 
   const related = relatedAreas(path);
+  const roster = areaTherapistsFor(path);
+  const hubHref = hubAnchorFor(path);
 
   return (
     <>
@@ -177,7 +180,14 @@ export default function LocationPage({ content }: { content: LocationContent }) 
         </div>
       </section>
 
-      <Breadcrumb items={[{ label: "Locations", href: "/locations/" }, { label: breadcrumb }]} />
+      {/* Mirrors the BreadcrumbList in locationLd() — Google requires the
+          visible trail and the structured data to correspond. */}
+      <Breadcrumb
+        items={[
+          { label: areaName, href: hubHref },
+          { label: breadcrumb },
+        ]}
+      />
 
       {/* WHY THIS AREA */}
       <section className={styles.section} id="why">
@@ -257,6 +267,17 @@ export default function LocationPage({ content }: { content: LocationContent }) 
           </div>
         </div>
       </section>
+
+      {roster ? (
+        <TherapistSection
+          therapists={roster.therapists}
+          eyebrow={`Therapists for ${areaName}`}
+          intro={roster.intro}
+          headingLead="Who You Will"
+          headingEm="Book"
+          headingTail={`From ${areaName}`}
+        />
+      ) : null}
 
       {/* NEARBY LANDMARKS */}
       <section className={styles.section} id="nearby">
@@ -484,7 +505,6 @@ export default function LocationPage({ content }: { content: LocationContent }) 
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={path} />
 
       <section className={styles.ctaSection}>
         <div data-reveal>

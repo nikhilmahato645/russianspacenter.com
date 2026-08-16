@@ -7,14 +7,11 @@ import {
   ChevronRight,
   Camera,
   Sparkles,
-  PhoneCall,
   MessageCircle,
-  Images,
 } from "lucide-react";
 import Breadcrumb from "../components/Breadcrumb";
 import FaqAccordion from "../components/FaqAccordion";
 import { PHONE_DISPLAY, PHONE_E164, waLink } from "../lib/site";
-import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { CATEGORIES, GALLERY_FAQS, SHOTS, type CategoryId } from "./data";
 import Img from "../components/Img";
@@ -74,35 +71,25 @@ export default function Gallery() {
 
   return (
     <>
-      {/* HERO */}
-      <section className={styles.hero}>
-        <div
-          className={styles.heroImage}
-          style={{ backgroundImage: "url('/home_images/mahipalpurspa4.jpg')" }}
-        />
-        <div className={styles.heroScrim} />
-        <div className={styles.heroContent}>
-          <p className={styles.heroBadge}>
-            <Camera size={13} /> {SHOTS.length} Photos · Shot On Site
-          </p>
+      {/* HEADER — no background photograph here on purpose: the page is the
+          photographs, and a hero image competes with the grid below it. */}
+      <header className={styles.plainHeader}>
+        <div className={styles.plainHeaderInner}>
+          <p className="section-label">Photo Gallery</p>
           <h1>
-            Photo <em>Gallery</em> — Our Spa in Mahipalpur
+            Inside <em>Russian Spa Centre</em>, Mahipalpur
           </h1>
-          <p className={styles.heroText}>
-            Every photograph below was taken inside our Defence Enclave premises — the Russian Banya, the private
-            treatment rooms, the lounge and the changing areas. No stock imagery, no borrowed interiors. See exactly
-            what you are booking before you arrive.
+          <p className={styles.plainHeaderText}>
+            Our Defence Enclave premises and the therapists who work there. Tap any photograph to open it full
+            size, or use the arrow keys to move through the set.
           </p>
-          <div className={styles.heroActions}>
-            <a href="#photos" className="btn-gold">
-              <Images size={15} /> Browse Photos
-            </a>
-            <a href={`tel:${PHONE_E164}`} className="btn-outline">
-              <PhoneCall size={15} /> Call {PHONE_DISPLAY}
-            </a>
-          </div>
+          <p className={styles.plainHeaderMeta}>
+            <Camera size={14} strokeWidth={2} /> {SHOTS.length} photographs
+            <span aria-hidden="true">·</span>
+            <a href={`tel:${PHONE_E164}`}>Call {PHONE_DISPLAY}</a>
+          </p>
         </div>
-      </section>
+      </header>
 
       <Breadcrumb items={[{ label: "Gallery" }]} />
 
@@ -114,7 +101,8 @@ export default function Gallery() {
             Look Around <em>Before You Book</em>
           </h2>
           <p>
-            Filter by area, then tap any photo to open it full size. Use the arrow keys to move through the set.
+            The premises under &ldquo;The Spa&rdquo;, and the therapists you can ask for by name under
+            &ldquo;Our Team&rdquo;.
           </p>
         </div>
 
@@ -209,7 +197,6 @@ export default function Gallery() {
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={"/gallery/"} />
 
       <section className={styles.ctaSection}>
         <div data-reveal>

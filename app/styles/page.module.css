@@ -46,7 +46,7 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url('/home_images/mahipalpurspa2.jpg') center 42% / cover no-repeat;
+  background: url('/Rawimages/russianspacenterimage7.webp') center 42% / cover no-repeat;
   transform: scale(1.04);
   animation: heroDrift 26s var(--ease-inout) infinite alternate;
 }
@@ -1067,6 +1067,85 @@
   color: var(--muted);
 }
 
+
+/* ===================== PLAIN HEADER (gallery) =====================
+   A page whose whole point is photographs should not open with another
+   photograph. This is a typographic header on the ivory canvas: it clears the
+   fixed navbar itself, since there is no hero section doing that job. */
+.plainHeader {
+  position: relative;
+  background:
+    radial-gradient(46rem 26rem at 18% 0%, rgb(var(--gold-rgb) / 0.1), transparent 62%),
+    radial-gradient(38rem 24rem at 92% 10%, rgb(var(--cypress-rgb) / 0.08), transparent 64%),
+    var(--bg);
+  border-bottom: 1px solid var(--line);
+}
+
+.plainHeaderInner {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 96px) var(--pad) clamp(36px, 5vw, 60px);
+}
+
+.plainHeader h1 {
+  max-width: 18ch;
+  font-family: var(--font-display);
+  font-size: clamp(2.05rem, 1.3rem + 3.4vw, 3.6rem);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.026em;
+  color: var(--ink);
+  text-wrap: balance;
+  animation: riseUp 0.9s var(--ease-out) both;
+}
+
+.plainHeader h1 em {
+  font-style: italic;
+  color: var(--brand-700);
+}
+
+.plainHeaderText {
+  max-width: 56ch;
+  margin-top: 20px;
+  font-size: var(--t-lead);
+  line-height: 1.85;
+  color: var(--muted);
+}
+
+.plainHeaderMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.plainHeaderMeta svg {
+  color: var(--gold-ink);
+}
+
+.plainHeaderMeta span {
+  color: var(--line-2);
+}
+
+.plainHeaderMeta a {
+  color: var(--brand-700);
+  border-bottom: 1px solid var(--line-gold);
+  transition: color var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease);
+}
+
+.plainHeaderMeta a:hover {
+  color: var(--brand-800);
+  border-color: var(--gold);
+}
+
 /* ================================ GALLERY ================================ */
 .filterBar {
   display: flex;
@@ -1124,13 +1203,13 @@
    into a fixed tile, so no image is distorted. */
 .galleryGrid {
   columns: 1;
-  column-gap: 16px;
+  column-gap: 14px;
 }
 
 .galleryItem {
   display: block;
   width: 100%;
-  margin: 0 0 16px;
+  margin: 0 0 14px;
   padding: 0;
   border: 1px solid var(--line);
   border-radius: var(--r-lg);
@@ -1786,5 +1865,11 @@
 @media (min-width: 1200px) {
   .galleryGrid {
     columns: 4;
+  }
+}
+
+@media (min-width: 1500px) {
+  .galleryGrid {
+    columns: 5;
   }
 }

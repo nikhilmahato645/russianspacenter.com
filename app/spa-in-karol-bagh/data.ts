@@ -11,7 +11,7 @@ export const KAROL_BAGH: LocationContent = {
   areaName: "Karol Bagh",
   breadcrumb: "Spa in Karol Bagh",
 
-  heroImage: "/home_images/mahipalpurspa5.jpg",
+  heroImage: "/Rawimages/russianspacenterimage16.webp",
   heroBadge: "Serving Karol Bagh, Patel Nagar & Central Delhi · Open 24 Hours",
   h1: { lead: "Best Spa & Body Massage near", em: "Karol Bagh" },
   heroText: [

@@ -28,7 +28,6 @@ import {
   SERVICE_PINCODES,
   waLink,
 } from "../lib/site";
-import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { CONTACT_FAQS, REACH_US } from "./data";
 
@@ -160,7 +159,7 @@ export default function Contact() {
       <section className={styles.hero}>
         <div
           className={styles.heroImage}
-          style={{ backgroundImage: "url('/home_images/mahipalpurspa11.jpg')" }}
+          style={{ backgroundImage: "url('/Rawimages/russianspacenterimage5.webp')" }}
         />
         <div className={styles.heroScrim} />
         <div className={styles.heroContent}>
@@ -462,7 +461,6 @@ export default function Contact() {
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={"/contact/"} />
 
       <section className={styles.ctaSection}>
         <div data-reveal>

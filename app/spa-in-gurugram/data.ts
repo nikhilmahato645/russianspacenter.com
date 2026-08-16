@@ -18,7 +18,7 @@ export const GURUGRAM: LocationContent = {
   areaServedName: "Gurugram, Haryana",
   containedInCity: "Gurugram",
 
-  heroImage: "/home_images/mahipalpurspa11.jpg",
+  heroImage: "/Rawimages/russianspacenterimage17.webp",
   heroBadge: "Serving Cyber City, Udyog Vihar & DLF · Open 24 Hours",
   h1: { lead: "Best Spa & Body Massage near", em: "Gurugram" },
   heroText: [

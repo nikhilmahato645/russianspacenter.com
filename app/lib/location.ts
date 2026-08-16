@@ -204,6 +204,37 @@ export function relatedAreas(currentPath: string): AreaLink[] {
 }
 
 /**
+ * Areas that have their own card on the /locations/ hub, so `#slug` resolves to
+ * something real. `/spa-in-delhi/` is city-wide and has no card, so it falls
+ * back to the hub itself rather than pointing at a fragment that does not exist.
+ */
+const HUB_ANCHORS = new Set([
+  "mahipalpur",
+  "aerocity",
+  "dwarka",
+  "vasant-kunj",
+  "green-park",
+  "hauz-khas",
+  "saket",
+  "karol-bagh",
+  "gurugram",
+]);
+
+/**
+ * Second breadcrumb level for an area page.
+ *
+ * This used to be a generic "Locations" for all ten pages, which is why every
+ * area page rendered the identical `russianspacenter.com › Locations` in Google
+ * results — Google shows the *ancestor* trail and truncates the current page,
+ * so the only crumb on display was the one they all shared. Naming this level
+ * after the area gives each result its own breadcrumb.
+ */
+export function hubAnchorFor(path: string) {
+  const slug = path.replace("/spa-in-", "").replace(/\//g, "");
+  return HUB_ANCHORS.has(slug) ? `/locations/#${slug}` : "/locations/";
+}
+
+/**
  * Structured data for an area landing page.
  *
  * Note what this deliberately does NOT do: it never emits a second
@@ -261,7 +292,12 @@ export function locationLd(content: LocationContent) {
       "@type": "BreadcrumbList",
       itemListElement: [
         { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-        { "@type": "ListItem", position: 2, name: "Locations", item: `${SITE_URL}/locations/` },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: content.areaName,
+          item: `${SITE_URL}${hubAnchorFor(content.path)}`,
+        },
         { "@type": "ListItem", position: 3, name: content.breadcrumb, item: url },
       ],
     },

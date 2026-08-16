@@ -43,7 +43,7 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  background: url('/home_images/mahipalpurspa10.jpg') center 40% / cover no-repeat;
+  background: url('/Rawimages/russianspacenterimage6.webp') center 40% / cover no-repeat;
   transform: scale(1.04);
   animation: heroDrift 28s var(--ease-inout) infinite alternate;
 }

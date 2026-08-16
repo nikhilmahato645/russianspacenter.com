@@ -35,7 +35,6 @@ import {
 } from "lucide-react";
 import Breadcrumb from "../components/Breadcrumb";
 import { PHONE_DISPLAY, PHONE_E164, SITE_URL, breadcrumbLd, jsonLd, waLink } from "../lib/site";
-import AlsoVisit from "../components/AlsoVisit";
 import styles from "./About.module.css";
 
 const STATS = [
@@ -559,7 +558,6 @@ export default function About() {
       </section>
 
       {/* CTA */}
-      <AlsoVisit path={"/about/"} />
 
       <section className={styles.ctaSection}>
         <p className="section-label">Book Your Experience</p>

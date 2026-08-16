@@ -14,7 +14,7 @@ export const SAKET: LocationContent = {
   areaName: "Saket",
   breadcrumb: "Spa in Saket",
 
-  heroImage: "/home_images/mahipalpurspa13.jpg",
+  heroImage: "/Rawimages/russianspacenterimage13.webp",
   heroBadge: "Serving Saket & Malviya Nagar · Open 24 Hours",
   h1: { lead: "Best Spa & Body Massage near", em: "Saket" },
   heroText: [
