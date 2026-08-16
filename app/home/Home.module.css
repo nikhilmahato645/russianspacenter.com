@@ -7,8 +7,9 @@
    so shared keyframes have to be declared in each module that uses them. */
 @keyframes riseIn {
   from {
+
     opacity: 0;
-    transform: translate3d(0, 26px, 0);
+    transform: translate3d(0, 27px, 0);
   }
   to {
     opacity: 1;
