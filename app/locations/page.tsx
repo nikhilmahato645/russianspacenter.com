@@ -6,11 +6,9 @@ import { LOCAL_BUSINESS, SITE_URL, breadcrumbLd, faqLd, jsonLd } from "../lib/si
 const PATH = "/locations/";
 
 export const metadata: Metadata = {
-  title: "Spa Locations in Delhi NCR | Mahipalpur, Aerocity, IGI Airport, Dwarka & Vasant Kunj",
+  title: "Spa & Body Massage Across Delhi NCR | Russian Spa Centre",
   description:
-    "Russian Spa Centre is at Defence Enclave, Mahipalpur — 10 min from IGI Airport T3, 5 min from Aerocity hotels, 15 min from Dwarka, 12 min from Vasant Kunj. Free parking, hotel pickup, open 24/7.",
-  keywords:
-    "spa in Mahipalpur, spa in Aerocity, spa near IGI Airport, spa in Dwarka, spa in Vasant Kunj, massage near Aerocity hotels, spa near JW Marriott Aerocity, spa near Pullman Aerocity, 24 hour spa near Delhi Airport, Russian spa Delhi NCR, spa near Mahipalpur Metro, massage centre South Delhi, spa directions Defence Enclave",
+    "One premises at Defence Enclave, Mahipalpur — with honest drive times from Aerocity, IGI Airport, Dwarka, Vasant Kunj, Saket and Gurugram.",
   robots: {
     index: true,
     follow: true,

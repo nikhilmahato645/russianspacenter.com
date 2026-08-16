@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Flame,
   WavesLadder,
@@ -27,6 +25,7 @@ import {
 import Breadcrumb from "../components/Breadcrumb";
 import FaqAccordion from "../components/FaqAccordion";
 import { PHONE_DISPLAY, PHONE_E164, WHATSAPP_URL, waLink } from "../lib/site";
+import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { SERVICE_FAQS } from "./data";
 
@@ -206,24 +205,6 @@ const ASSURANCES = [
   { icon: ShieldCheck, title: "Transparent Pricing", desc: "The rate you're quoted is the rate you pay. No hidden add-ons." },
 ];
 
-const KEYWORDS = [
-  "spa services in Mahipalpur",
-  "body massage in Mahipalpur",
-  "Russian Banya Delhi",
-  "deep tissue massage near IGI Airport",
-  "Swedish massage Aerocity",
-  "Thai massage Mahipalpur",
-  "aromatherapy massage Delhi",
-  "hot stone massage near me",
-  "couples spa package Delhi NCR",
-  "reflexology near Delhi Airport",
-  "Ayurvedic massage Mahipalpur",
-  "prenatal massage Delhi",
-  "sports massage Aerocity",
-  "24 hour massage centre Delhi",
-  "full body massage Dwarka",
-  "spa treatments Vasant Kunj",
-];
 
 export default function Services() {
   return (
@@ -443,6 +424,8 @@ export default function Services() {
       </section>
 
       {/* CTA */}
+      <AlsoVisit path={"/services/"} />
+
       <section className={styles.ctaSection}>
         <div data-reveal>
           <p className={`section-label ${styles.ctaLabel}`}>Book Your Treatment</p>
@@ -509,15 +492,6 @@ export default function Services() {
           </a>
         </div>
       </section>
-
-      {/* KEYWORDS */}
-      <div className={styles.keywordCloud}>
-        {KEYWORDS.map((kw) => (
-          <span key={kw} className={styles.keywordPill}>
-            {kw}
-          </span>
-        ))}
-      </div>
 
       <noscript>
         <p style={{ textAlign: "center", padding: "0 20px 40px" }}>

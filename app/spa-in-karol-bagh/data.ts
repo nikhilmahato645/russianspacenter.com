@@ -13,7 +13,7 @@ export const KAROL_BAGH: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa5.jpg",
   heroBadge: "Serving Karol Bagh, Patel Nagar & Central Delhi · Open 24 Hours",
-  h1: { lead: "Spa near", em: "Karol Bagh", tail: "— A Real Spa, Not A Back Room" },
+  h1: { lead: "Best Spa & Body Massage near", em: "Karol Bagh" },
   heroText: [
     "Karol Bagh has wellness options the way it has everything else: above a shop, behind a curtain, quick. We are twenty-five minutes west at Defence Enclave, Mahipalpur — a wood-lined Russian Banya, private suites, a relaxation lounge, and certified therapists with five years' minimum experience.",
     "The Ring Road gets you here in one clean run, and the doors do not close. Traders finishing on Ajmal Khan Road at ten, families staying in the Karol Bagh hotel belt, and travellers with a night train out of New Delhi station all book at hours nothing near the market is still open for.",
@@ -227,31 +227,13 @@ export const KAROL_BAGH: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Karol Bagh",
-    "best spa near Karol Bagh",
-    "body massage in Karol Bagh",
-    "massage centre near Karol Bagh",
-    "Russian spa near Karol Bagh",
-    "spa near Ajmal Khan Road",
-    "spa near Gaffar Market",
-    "24 hour spa central Delhi",
-    "couples spa near Karol Bagh",
-    "deep tissue massage Karol Bagh",
-    "spa near Karol Bagh Metro",
-    "Russian Banya central Delhi",
-    "full body massage Karol Bagh",
-    "night spa Karol Bagh",
-  ],
 
   geo: { lat: 28.6519, lng: 77.1909 },
 
   seo: {
-    title: "Spa near Karol Bagh | Russian Banya & Body Massage 25 Min Away | Open 24/7",
+    title: "Spa & Body Massage near Karol Bagh | Russian Spa Centre",
     description:
-      "A full spa for Karol Bagh — 25 minutes via the Ring Road and open 24 hours. Authentic Russian Banya, private couples suites, deep tissue massage, certified therapists, free parking. No night surcharge. Call +91 9999999999",
-    keywords:
-      "spa in karol bagh, best spa karol bagh, body massage karol bagh, massage centre karol bagh, russian spa karol bagh, spa near ajmal khan road, spa near gaffar market, luxury spa karol bagh, full body massage karol bagh, deep tissue massage karol bagh, swedish massage karol bagh, thai spa karol bagh, couples spa karol bagh, 24 hour spa karol bagh, spa near karol bagh metro, spa near rajendra place, spa near patel nagar, spa near paharganj, spa near new delhi railway station, spa for men karol bagh, ladies spa karol bagh, affordable spa karol bagh, night spa central delhi",
+      "A licensed spa with private rooms, 25 minutes from Karol Bagh via the Ring Road. Body massage, Russian Banya and couples suites, open 24 hours.",
     ogTitle: "Spa near Karol Bagh | Russian Banya & Massage, 25 Minutes Away",
     ogDescription:
       "A real spa rather than a room above a shop — Russian Banya, private couples suites and certified therapists, 25 minutes down the Ring Road, open all night.",

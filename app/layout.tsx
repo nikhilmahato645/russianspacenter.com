@@ -1,18 +1,27 @@
 import "./theme.css";
 import "./globals.css";
 import type { Metadata } from "next";
+import { Fraunces, Manrope } from "next/font/google";
 import { MapPin, Phone, Mail, Clock, Sparkles, MessageCircle, ArrowUpRight } from "lucide-react";
 import Navbar from "./components/Navbar";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import Reveal from "./components/Reveal";
-import { LOCAL_BUSINESS, jsonLd } from "./lib/site";
+import {
+  EMAIL,
+  LOCAL_BUSINESS,
+  PHONE_DISPLAY,
+  PHONE_E164,
+  SITE_HOST,
+  SITE_URL,
+  jsonLd,
+  waLink,
+} from "./lib/site";
+import Img from "./components/Img";
 
 export const metadata: Metadata = {
-  title: "Russian Spa Centre Mahipalpur | Luxury Spa & Massage Near Delhi Airport | 24/7 Open",
+  title: "Russian Spa Centre | Body Massage & Spa in Mahipalpur",
   description:
-    "Premium Russian Banya, body massage & luxury spa services in Mahipalpur & Aerocity. Open 24/7. 10 minutes from IGI Airport. Book now: +91 9999999999",
-  keywords:
-    "Russian Body, Massage Centres, Beauty Spas For Men, Russian Body Massage Centres, Russian Body Massage Centres-Z, Beauty Spas For Men-A, 24 Hours Beauty Spas Massage, Centres For Men, 24 Hours Beauty Spas-A, Massage Centres For Men-Z, 24 Hours Body Massage Centres, Beauty Spas, 24 Hours Body Massage Centres-Z, Beauty Spas-A, Russian spa in mahipalpur, Russian spa in aerocity, Russian spa Mahipalpur",
+    "Body massage, authentic Russian Banya and spa treatments in Mahipalpur, ten minutes from IGI Airport. Private rooms, certified therapists, open 24/7.",
   robots: {
     index: true,
     follow: true,
@@ -26,15 +35,18 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  metadataBase: new URL(SITE_URL),
   openGraph: {
-    title: "Spa in Mahipalpur Near IGI Airport Delhi | Russian Spa Centre",
+    title: "Russian Spa Centre | Body Massage & Spa in Mahipalpur",
     description:
-      "Luxury Russian Spa & Body Massage in Mahipalpur. Open 24/7. Call +91 9999999999",
-    url: "https://russianspacenter.com",
+      "Body massage, Russian Banya and spa treatments in Mahipalpur, ten minutes from IGI Airport. Private rooms, certified therapists, open 24 hours.",
+    // Trailing slash matters: next.config.js sets trailingSlash: true, so the
+    // canonical form of the home page is "/" and anything else is a redirect.
+    url: `${SITE_URL}/`,
     siteName: "Russian Spa Centre",
     images: [
       {
-        url: "https://russianspacenter.com/og-image.png",
+        url: `${SITE_URL}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Spa in Mahipalpur",
@@ -45,17 +57,52 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Spa in Mahipalpur Near IGI Airport",
-    description: "Luxury Russian Spa & Massage 24/7",
-    images: ["https://russianspacenter.com/og-image.png"],
+    title: "Russian Spa Centre | Body Massage & Spa in Mahipalpur",
+    description: "Body massage, Russian Banya and spa treatments in Mahipalpur. Open 24 hours.",
+    images: [`${SITE_URL}/og-image.png`],
   },
   alternates: {
-    canonical: "https://russianspacenter.com",
+    canonical: `${SITE_URL}/`,
+  },
+  // `?v=2` retires the old purple placeholder icon: browsers and Google cache
+  // favicons by URL and would otherwise keep serving it for weeks.
+  icons: {
+    icon: [
+      { url: "/favicon.ico?v=2", sizes: "48x48" },
+      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
+      { url: "/icon-192.png?v=2", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png?v=2", type: "image/png", sizes: "512x512" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png?v=2", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
+  applicationName: "Russian Spa Centre",
+  appleWebApp: {
+    title: "Russian Spa",
+    capable: true,
+    statusBarStyle: "default",
   },
 };
 
-const WHATSAPP_URL =
-  "https://wa.me/919999999999?text=Hello%2C%20I%20want%20to%20book%20a%20spa%20appointment";
+/**
+ * Fonts are self-hosted through next/font rather than linked from Google.
+ * The CSS is inlined at build time, which removes a render-blocking
+ * third-party stylesheet and the two preconnects that went with it.
+ */
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-fraunces",
+});
+
+const manrope = Manrope({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-manrope",
+});
+
+const WHATSAPP_URL = waLink("Hello, I want to book a spa appointment at Russian Spa Centre.");
 
 /** Every indexable route gets a footer link, so each page is one hop from any other. */
 const FOOTER_LINKS = [
@@ -86,17 +133,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   // The pre-paint script in <head> stamps `reveal-ready` onto <html>, so the
   // hydrated client tree intentionally differs from the server HTML there.
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${fraunces.variable} ${manrope.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Jost:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-        <meta name="theme-color" content="#111111" />
+        <meta name="theme-color" content="#f6f2ea" />
         <meta name="format-detection" content="telephone=no" />
 
         {/* Site-wide business entity. Inner pages reference the same `@id`, so
@@ -118,6 +158,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
       </head>
       <body>
+        {/* There is deliberately no loading curtain here. An opaque overlay on
+            first paint makes every element behind it non-contentful, which
+            pushed Largest Contentful Paint out by roughly a second on mobile.
+            The hero's own entrance animation is the loading experience. */}
         <Navbar />
         <Reveal />
 
@@ -133,10 +177,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             className="floating-btn btn-whatsapp"
             aria-label="Chat on WhatsApp"
           >
-            <img src="/call_whatshap/whatshap.png" alt="Chat on WhatsApp" />
+            <Img src="/call_whatshap/whatshap.png" alt="Chat on WhatsApp" />
           </a>
-          <a href="tel:+919999999999" className="floating-btn btn-call" aria-label="Call Now">
-            <img src="/call_whatshap/call.png" alt="Call Now" />
+          <a href={`tel:${PHONE_E164}`} className="floating-btn btn-call" aria-label="Call Now">
+            <Img src="/call_whatshap/call.png" alt="Call Now" />
           </a>
         </div>
 
@@ -148,7 +192,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <p>Same-day appointments available · 10 minutes from IGI Airport</p>
               </div>
               <div className="footer-cta-actions">
-                <a href="tel:+919999999999" className="btn-gold">
+                <a href={`tel:${PHONE_E164}`} className="btn-gold">
                   <Phone size={15} /> Call Now
                 </a>
                 <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-outline">
@@ -178,7 +222,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     {link.label} <ArrowUpRight size={13} />
                   </a>
                 ))}
-                <h4 style={{ marginTop: "26px" }}>Areas We Serve</h4>
+              </div>
+
+              <div className="footer-col" data-reveal data-reveal-delay="140">
+                <h4>Areas We Serve</h4>
                 {FOOTER_AREAS.map((link) => (
                   <a key={link.href} href={link.href}>
                     {link.label} <ArrowUpRight size={13} />
@@ -186,28 +233,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 ))}
               </div>
 
-              <div className="footer-col" data-reveal data-reveal-delay="160">
+              <div className="footer-col" data-reveal data-reveal-delay="200">
                 <h4>Visit Us</h4>
                 <p>
                   <MapPin size={15} /> Office No. 118, Defence Enclave, Adjoining Aerocity, Mahipalpur, New Delhi
                   110037
                 </p>
-                <a href="tel:+919999999999"><Phone size={15} /> +91 9999999999</a>
-                <a href="mailto:info@russianspacenter.com"><Mail size={15} /> info@russianspacenter.com</a>
+                <a href={`tel:${PHONE_E164}`}><Phone size={15} /> {PHONE_DISPLAY}</a>
+                <a href={`mailto:${EMAIL}`}><Mail size={15} /> {EMAIL}</a>
                 <p><Clock size={15} /> Open 24 Hours · 7 Days a Week</p>
               </div>
             </div>
 
-            <div className="keyword-cloud">
-              <span>Russian Body</span><span>Massage Centres</span><span>Beauty Spas For Men</span>
-              <span>Russian Body Massage Centres</span><span>24 Hours Beauty Spas Massage</span>
-              <span>Centres For Men</span><span>24 Hours Body Massage Centres</span>
-              <span>Russian spa in mahipalpur</span>
-              <span>Full Body Massage</span><span>Aromatherapy Massage</span><span>Hot Stone Massage</span>
-            </div>
+            {/* A site-wide keyword cloud used to sit here ("Russian Body",
+                "Centres For Men", …). It was keyword stuffing under Google's
+                spam policies and said nothing to a reader. The footer's real
+                internal links above do the same job honestly. */}
 
             <div className="footer-bottom">
-              <p>© 2026 Russian Spa Centre · russianspacenter.com · All rights reserved</p>
+              <p>© 2026 Russian Spa Centre · {SITE_HOST} · All rights reserved</p>
               <span className="footer-badge">
                 <Sparkles size={12} /> 15% OFF FIRST VISIT · OPEN 24/7
               </span>

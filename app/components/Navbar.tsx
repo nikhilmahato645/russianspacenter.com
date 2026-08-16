@@ -2,40 +2,41 @@
 
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { X, PhoneCall } from "lucide-react";
+import { X, PhoneCall, MapPin, Clock, MessageCircle } from "lucide-react";
 import styles from "./Navbar.module.css";
 import ScrollProgress from "./ScrollProgress";
+import { ADDRESS, PHONE_DISPLAY, PHONE_E164, waLink } from "../lib/site";
 
 /**
- * `primary` links appear in the desktop pill bar, which only has room for
- * seven before it collides with the logo and the Book Now button. The drawer
- * shows every link, so nothing is unreachable on mobile.
+ * The desktop bar carries the seven section routes; the ten area landing pages
+ * live in the drawer under their own heading, so every route stays reachable
+ * without crowding the bar into a squeeze at 1080–1280px.
  */
-const LINKS = [
-  { href: "/", label: "Home", primary: true },
-  { href: "/services/", label: "Services", primary: true },
-  { href: "/pricing/", label: "Pricing", primary: true },
-  { href: "/gallery/", label: "Gallery", primary: true },
-  { href: "/locations/", label: "Locations", primary: true },
-  { href: "/about/", label: "About", primary: true },
-  { href: "/contact/", label: "Contact", primary: true },
-  { href: "/spa-in-mahipalpur/", label: "Spa in Mahipalpur", primary: false },
-  { href: "/spa-in-aerocity/", label: "Spa in Aerocity", primary: false },
-  { href: "/spa-in-vasant-kunj/", label: "Spa in Vasant Kunj", primary: false },
-  { href: "/spa-in-saket/", label: "Spa in Saket", primary: false },
-  { href: "/spa-in-hauz-khas/", label: "Spa in Hauz Khas", primary: false },
-  { href: "/spa-in-green-park/", label: "Spa in Green Park", primary: false },
-  { href: "/spa-in-dwarka/", label: "Spa in Dwarka", primary: false },
-  { href: "/spa-in-karol-bagh/", label: "Spa in Karol Bagh", primary: false },
-  { href: "/spa-in-gurugram/", label: "Spa in Gurugram", primary: false },
-  { href: "/spa-in-delhi/", label: "Spa in Delhi", primary: false },
+const MAIN_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "/services/", label: "Services" },
+  { href: "/pricing/", label: "Pricing" },
+  { href: "/gallery/", label: "Gallery" },
+  { href: "/locations/", label: "Locations" },
+  { href: "/about/", label: "About" },
+  { href: "/contact/", label: "Contact" },
 ];
 
-const DESKTOP_LINKS = LINKS.filter((link) => link.primary);
+const AREA_LINKS = [
+  { href: "/spa-in-mahipalpur/", label: "Mahipalpur" },
+  { href: "/spa-in-aerocity/", label: "Aerocity" },
+  { href: "/spa-in-vasant-kunj/", label: "Vasant Kunj" },
+  { href: "/spa-in-saket/", label: "Saket" },
+  { href: "/spa-in-hauz-khas/", label: "Hauz Khas" },
+  { href: "/spa-in-green-park/", label: "Green Park" },
+  { href: "/spa-in-dwarka/", label: "Dwarka" },
+  { href: "/spa-in-karol-bagh/", label: "Karol Bagh" },
+  { href: "/spa-in-gurugram/", label: "Gurugram" },
+  { href: "/spa-in-delhi/", label: "Delhi" },
+];
 
-const PHONE = "+919999999999";
-const WHATSAPP_URL =
-  "https://wa.me/919999999999?text=Hello%2C%20I%20want%20to%20book%20a%20spa%20appointment";
+const PHONE = PHONE_E164;
+const WHATSAPP_URL = waLink("Hello, I want to book a spa appointment at Russian Spa Centre.");
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -73,56 +74,77 @@ export default function Navbar() {
   return (
     <>
       <header className={`${styles.nav} ${scrolled ? styles.navScrolled : ""}`}>
-        <div className={styles.navInner}>
-          <a href="/" className={styles.logo} aria-label="Russian Spa Centre — home">
-            <span className={styles.logoMark}>
-              <img src="/logo.svg" alt="" aria-hidden="true" />
+        {/* Utility strip — collapses to nothing once the page is scrolled, so the
+            address and phone are there on arrival and out of the way after. */}
+        <div className={styles.topbar}>
+          <div className={styles.topbarInner}>
+            <span className={styles.topItem}>
+              <MapPin size={13} strokeWidth={2} />
+              {ADDRESS.street}, {ADDRESS.locality} {ADDRESS.postalCode}
             </span>
-            <span className={styles.logoText}>
-              Russian Spa Centre
-              <span>Mahipalpur · Aerocity · Delhi NCR</span>
-            </span>
-          </a>
-
-          <nav className={styles.links} aria-label="Primary">
-            {DESKTOP_LINKS.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={isActive(item.href) ? styles.linkActive : undefined}
-                aria-current={isActive(item.href) ? "page" : undefined}
-              >
-                {item.label}
+            <span className={styles.topRight}>
+              <span className={styles.topItem}>
+                <Clock size={13} strokeWidth={2} />
+                Open 24 Hours · 365 Days
+              </span>
+              <a href={`tel:${PHONE}`} className={styles.topPhone}>
+                <PhoneCall size={13} strokeWidth={2.2} />
+                {PHONE_DISPLAY}
               </a>
-            ))}
-          </nav>
-
-          <div className={styles.navRight}>
-            <span className={styles.statusPill}>
-              <span className={styles.dot} aria-hidden="true" />
-              Open 24/7
             </span>
+          </div>
+        </div>
 
-            <a href={`tel:${PHONE}`} className={styles.bookBtn}>
-              <PhoneCall size={14} strokeWidth={2.3} />
-              Book Now
+        <div className={styles.bar}>
+          <div className={styles.navInner}>
+            <a href="/" className={styles.logo} aria-label="Russian Spa Centre — home">
+              <img className={styles.logoMark} src="/logo.svg" alt="" aria-hidden="true" />
+              <span className={styles.logoText}>
+                Russian Spa Centre
+                <span>Mahipalpur · Aerocity · Delhi NCR</span>
+              </span>
             </a>
 
-            <a href={`tel:${PHONE}`} className={styles.iconBtn} aria-label="Call now">
-              <PhoneCall size={18} strokeWidth={2} />
-            </a>
+            <nav className={styles.links} aria-label="Primary">
+              {MAIN_LINKS.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  className={isActive(item.href) ? styles.linkActive : undefined}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
 
-            <button
-              type="button"
-              className={`${styles.menuToggle} ${open ? styles.menuToggleOpen : ""}`}
-              onClick={() => setOpen((v) => !v)}
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-            >
-              <span />
-              <span />
-              <span />
-            </button>
+            <div className={styles.navRight}>
+              <span className={styles.statusPill}>
+                <span className={styles.dot} aria-hidden="true" />
+                Open 24/7
+              </span>
+
+              <a href={`tel:${PHONE}`} className={styles.bookBtn}>
+                <PhoneCall size={14} strokeWidth={2.3} />
+                Book Now
+              </a>
+
+              <a href={`tel:${PHONE}`} className={styles.iconBtn} aria-label="Call now">
+                <PhoneCall size={18} strokeWidth={2} />
+              </a>
+
+              <button
+                type="button"
+                className={`${styles.menuToggle} ${open ? styles.menuToggleOpen : ""}`}
+                onClick={() => setOpen((v) => !v)}
+                aria-label={open ? "Close menu" : "Open menu"}
+                aria-expanded={open}
+              >
+                <span />
+                <span />
+                <span />
+              </button>
+            </div>
           </div>
         </div>
 
@@ -143,8 +165,11 @@ export default function Navbar() {
         <div className={styles.drawerBody}>
           <div className={styles.drawerHeader}>
             <span className={styles.drawerBrand}>
-              Russian Spa Centre
-              <span>Mahipalpur · Aerocity</span>
+              <img src="/logo.svg" alt="" aria-hidden="true" />
+              <span>
+                Russian Spa Centre
+                <span>Mahipalpur · Aerocity</span>
+              </span>
             </span>
             <button
               type="button"
@@ -157,13 +182,30 @@ export default function Navbar() {
             </button>
           </div>
 
-          <nav className={styles.drawerList}>
-            {LINKS.map((item, i) => (
+          <nav className={styles.drawerList} aria-label="Mobile primary">
+            {MAIN_LINKS.map((item, i) => (
               <a
                 key={item.href}
                 href={item.href}
                 className={`${styles.drawerItem} ${isActive(item.href) ? styles.drawerItemActive : ""}`}
-                style={{ transitionDelay: open ? `${100 + i * 55}ms` : "0ms" }}
+                style={{ transitionDelay: open ? `${110 + i * 45}ms` : "0ms" }}
+                onClick={closeDrawer}
+                tabIndex={open ? 0 : -1}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Ten area pages as chips rather than ten more full-height rows —
+              the drawer stays one thumb-scroll deep on a phone. */}
+          <p className={styles.drawerLabel}>Spa Near You</p>
+          <nav className={styles.chips} aria-label="Areas we serve">
+            {AREA_LINKS.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`${styles.chip} ${isActive(item.href) ? styles.chipActive : ""}`}
                 onClick={closeDrawer}
                 tabIndex={open ? 0 : -1}
               >
@@ -174,15 +216,15 @@ export default function Navbar() {
 
           <div className={styles.drawerInfo}>
             <a href={`tel:${PHONE}`} tabIndex={open ? 0 : -1}>
-              +91 9999999999
+              {PHONE_DISPLAY}
             </a>
-            <p>Open 24 hours · Mahipalpur, New Delhi</p>
+            <p>Open 24 hours · Mahipalpur, New Delhi · 10 min from IGI Airport</p>
           </div>
         </div>
 
         <div className={styles.drawerFooter}>
           <a href={`tel:${PHONE}`} className={styles.drawerLink} tabIndex={open ? 0 : -1}>
-            Call &amp; Book Now
+            <PhoneCall size={15} strokeWidth={2.2} /> Call &amp; Book
           </a>
           <a
             href={WHATSAPP_URL}
@@ -191,7 +233,7 @@ export default function Navbar() {
             className={styles.drawerLink}
             tabIndex={open ? 0 : -1}
           >
-            WhatsApp Us
+            <MessageCircle size={15} strokeWidth={2.2} /> WhatsApp
           </a>
         </div>
       </aside>

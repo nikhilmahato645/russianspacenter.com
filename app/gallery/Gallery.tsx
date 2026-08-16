@@ -14,23 +14,15 @@ import {
 import Breadcrumb from "../components/Breadcrumb";
 import FaqAccordion from "../components/FaqAccordion";
 import { PHONE_DISPLAY, PHONE_E164, waLink } from "../lib/site";
+import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { CATEGORIES, GALLERY_FAQS, SHOTS, type CategoryId } from "./data";
+import Img from "../components/Img";
 
 type Filter = CategoryId | "all";
 
 const FILTERS: { id: Filter; label: string }[] = [{ id: "all", label: "All Photos" }, ...CATEGORIES];
 
-const KEYWORDS = [
-  "spa photos Mahipalpur",
-  "Russian Banya pictures Delhi",
-  "massage centre images Aerocity",
-  "spa interior Mahipalpur",
-  "couples spa room Delhi",
-  "spa near IGI Airport photos",
-  "treatment room pictures Delhi NCR",
-  "luxury spa gallery Mahipalpur",
-];
 
 export default function Gallery() {
   const [filter, setFilter] = useState<Filter>("all");
@@ -152,7 +144,7 @@ export default function Gallery() {
               data-reveal
               data-reveal-delay={(i % 4) * 70}
             >
-              <img
+              <Img
                 src={shot.src}
                 alt={shot.alt}
                 width={shot.width}
@@ -187,7 +179,7 @@ export default function Gallery() {
             >
               <ChevronLeft size={22} />
             </button>
-            <img src={active.src} alt={active.alt} width={active.width} height={active.height} />
+            <Img src={active.src} alt={active.alt} width={active.width} height={active.height} />
             <button
               type="button"
               className={`${styles.lightboxBtn} ${styles.lightboxNext}`}
@@ -217,6 +209,8 @@ export default function Gallery() {
       </section>
 
       {/* CTA */}
+      <AlsoVisit path={"/gallery/"} />
+
       <section className={styles.ctaSection}>
         <div data-reveal>
           <p className={`section-label ${styles.ctaLabel}`}>Seen Enough?</p>
@@ -239,15 +233,6 @@ export default function Gallery() {
           </p>
         </div>
       </section>
-
-      {/* KEYWORDS */}
-      <div className={styles.keywordCloud} style={{ paddingTop: "clamp(48px, 7vw, 84px)" }}>
-        {KEYWORDS.map((kw) => (
-          <span key={kw} className={styles.keywordPill}>
-            {kw}
-          </span>
-        ))}
-      </div>
     </>
   );
 }

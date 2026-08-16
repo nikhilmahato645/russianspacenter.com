@@ -4,13 +4,28 @@
  * updates every page and every structured-data block at once.
  */
 
+/**
+ * The one place the live domain is declared.
+ *
+ * Every canonical, Open Graph URL, sitemap entry and schema `@id` on the site is
+ * derived from this, so moving the site to a different domain — or consolidating
+ * with mahipalpurspaservicecentre.com — is a one-line change plus robots.txt.
+ *
+ * No trailing slash here; callers add it. `trailingSlash: true` in
+ * next.config.js means every path must end in "/".
+ */
 export const SITE_URL = "https://russianspacenter.com";
+
+/** Host only, for display in the footer copyright line. */
+export const SITE_HOST = SITE_URL.replace(/^https?:\/\//, "");
+
 export const BUSINESS_NAME = "Russian Spa Centre";
 
-export const PHONE_DISPLAY = "+91 9999999999";
-export const PHONE_E164 = "+919999999999";
-export const PHONE_DIGITS = "919999999999";
-export const EMAIL = "info@russianspacenter.com";
+export const PHONE_DISPLAY = "+91 8929979542";
+export const PHONE_E164 = "+918929979542";
+/** Digits only, for wa.me deep links. Same line as the phone. */
+export const PHONE_DIGITS = "918929979542";
+export const EMAIL = "info@mahipalpurspaservicecentre.com";
 
 export const ADDRESS = {
   street: "Office No. 118, Defence Enclave, Adjoining Aerocity, Mahipalpur",
@@ -26,6 +41,8 @@ export const ADDRESS = {
 export const AREAS_SERVED = [
   "Mahipalpur",
   "Aerocity",
+  "Defence Colony",
+  "South Delhi",
   "Dwarka",
   "Vasant Kunj",
   "Vasant Vihar",
@@ -36,6 +53,37 @@ export const AREAS_SERVED = [
   "Karol Bagh",
   "Gurugram",
   "IGI Airport, New Delhi",
+];
+
+/**
+ * Postal codes the spa takes bookings from, published as the `LocalBusiness`
+ * service area. Delhi codes first, then the wider NCR — Gurugram, Faridabad,
+ * Noida and Ghaziabad.
+ *
+ * NOTE: the supplied list contained "11048", which is five digits and not a
+ * valid Indian PIN. It is recorded here as 110048 — Defence Colony — which is
+ * both the obvious correction and consistent with Defence Colony appearing in
+ * the served-areas list above. Worth confirming.
+ */
+export const SERVICE_PINCODES = [
+  "110037", // Mahipalpur / Defence Enclave — the premises
+  "110001",
+  "110005",
+  "110011",
+  "110048", // Defence Colony (supplied as "11048")
+  "110049",
+  "110057",
+  "110067",
+  "110070",
+  "110075",
+  "110089",
+  "110097",
+  "122001", // Gurugram
+  "122002",
+  "121001", // Faridabad
+  "201301", // Noida
+  "201002", // Ghaziabad
+  "201014",
 ];
 
 export const DIRECTIONS_URL =
@@ -90,14 +138,66 @@ export const LOCAL_BUSINESS = {
       closes: "23:59",
     },
   ],
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: "4.8",
-    reviewCount: "350",
-    bestRating: "5",
-    worstRating: "1",
+  areaServed: [
+    ...AREAS_SERVED.map((name) => ({ "@type": "Place", name })),
+    ...SERVICE_PINCODES.map((postalCode) => ({
+      "@type": "PostalCodeSpecification",
+      postalCode,
+      addressCountry: "IN",
+    })),
+  ],
+} as const;
+
+/**
+ * NOTE — no `aggregateRating` here, deliberately.
+ *
+ * Google's structured-data policy treats ratings a business publishes about
+ * itself as "self-serving" and disallows them for LocalBusiness: they are
+ * ineligible for rich results and marking them up can trigger a manual action.
+ * Ratings have to come from a third party (Google Business Profile, JustDial)
+ * or from genuinely collected, individually attributable reviews.
+ *
+ * If real review data exists, the right move is to keep it on the Google
+ * Business Profile and let Google source it from there — not to re-declare it
+ * in this file.
+ */
+
+/**
+ * Site-level entity nodes, emitted once on the home page.
+ *
+ * `WebSite` and `Organization` describe the site and the company; the
+ * `LocalBusiness` node in the layout describes the premises. Keeping them as
+ * separate `@id`s that reference each other lets Google resolve one entity
+ * rather than three competing ones.
+ */
+export const WEBSITE_LD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: `${SITE_URL}/`,
+  name: BUSINESS_NAME,
+  inLanguage: "en-IN",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+} as const;
+
+export const ORGANIZATION_LD = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": `${SITE_URL}/#organization`,
+  name: BUSINESS_NAME,
+  url: `${SITE_URL}/`,
+  logo: `${SITE_URL}/logo.svg`,
+  image: `${SITE_URL}/og-image.png`,
+  telephone: PHONE_E164,
+  email: EMAIL,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: ADDRESS.street,
+    addressLocality: ADDRESS.locality,
+    addressRegion: ADDRESS.region,
+    postalCode: ADDRESS.postalCode,
+    addressCountry: ADDRESS.country,
   },
-  areaServed: AREAS_SERVED.map((name) => ({ "@type": "Place", name })),
 } as const;
 
 /** BreadcrumbList for an inner page — Home › <label>. */

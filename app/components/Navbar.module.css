@@ -1,144 +1,212 @@
-/* ===================== NAVBAR ===================== */
+/* ============================================================================
+   HEADER — two tiers: a moss utility strip over a solid ivory bar.
+
+   The strip carries address / hours / phone on arrival and collapses to zero
+   height once the page is scrolled, leaving a compact bar. The bar itself is
+   opaque: the previous translucent version let photographs and headings bleed
+   through the nav, which is what made it read as broken over image sections.
+   ========================================================================== */
+
 .nav {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  height: var(--nav-h);
-  display: flex;
-  align-items: center;
-  background: #fff;
+  z-index: 900;
+  background: var(--surface);
   border-bottom: 1px solid var(--line);
-  transition: box-shadow 0.35s var(--ease);
+  transition: box-shadow var(--dur) var(--ease), border-color var(--dur) var(--ease);
 }
 
 .navScrolled {
-  box-shadow: 0 6px 26px rgb(var(--ink-rgb) / 0.07);
+  border-bottom-color: var(--line-2);
+  box-shadow: 0 1px 2px rgb(var(--ink-rgb) / 0.04), 0 14px 34px rgb(var(--ink-rgb) / 0.08);
 }
 
-/* The nav deliberately runs wider than the content shell (--shell, 1240px).
-   Seven links plus the logo and the Book Now button do not fit in 1240px, and
-   on a wide monitor the old cap left the bar floating in the middle with the
-   links pill crushed against the logo. */
-.navInner {
-  width: 100%;
-  max-width: 1920px;
+/* ------------------------------ TOP STRIP ------------------------------ */
+.topbar {
+  height: var(--topbar-h);
+  overflow: hidden;
+  background: var(--dark);
+  color: rgb(255 255 255 / 0.72);
+  transition: height var(--dur) var(--ease-inout), opacity var(--dur-fast) var(--ease);
+}
+
+.navScrolled .topbar {
+  height: 0;
+  opacity: 0;
+}
+
+.topbarInner {
+  max-width: var(--shell);
+  height: var(--topbar-h);
   margin: 0 auto;
-  padding: 0 clamp(20px, 2.6vw, 56px);
+  padding: 0 var(--pad);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-}
-
-/* ---------- Logo ---------- */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  min-width: 0;
-  transition: transform 0.3s var(--ease);
-}
-
-.logo:hover {
-  transform: translateY(-1px);
-}
-
-.logoMark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  flex-shrink: 0;
-  border-radius: 13px;
-  background: var(--grad-brand-soft);
-  border: 1px solid var(--line);
-  box-shadow: var(--sh-1);
-  transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
-}
-
-.logo:hover .logoMark {
-  border-color: var(--line-strong);
-  box-shadow: 0 6px 18px rgb(var(--brand-rgb) / 0.18);
-}
-
-.logoMark img {
-  width: 24px;
-  height: 24px;
-  object-fit: contain;
-}
-
-/* `overflow: hidden` is what stops the tagline sliding underneath the links
-   pill. Without it the nowrap text simply spills out of the shrunken flex item
-   (.logo carries min-width: 0) and paints under its neighbour. */
-.logoText {
-  font-family: var(--font-display);
-  font-size: 1.02rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-  line-height: 1.15;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  overflow: hidden;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
   white-space: nowrap;
 }
 
-.logoText span {
-  font-size: 0.47rem;
-  font-family: var(--font-body);
-  font-weight: 500;
-  letter-spacing: 0.17em;
-  color: var(--muted);
-  text-transform: uppercase;
-  margin-top: 3px;
+.topItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* ---------- Desktop links ---------- */
+.topItem svg {
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.topRight {
+  display: inline-flex;
+  align-items: center;
+  gap: 22px;
+  flex-shrink: 0;
+}
+
+/* The strip's phone number is the only gold-on-dark element, so it is the one
+   thing the eye lands on up there. */
+.topPhone {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  border-radius: var(--r-pill);
+  border: 1px solid rgb(var(--gold-rgb) / 0.4);
+  color: var(--gold-bright);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.topPhone:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--dark);
+}
+
+/* -------------------------------- BAR -------------------------------- */
+.bar {
+  height: var(--nav-h);
+  transition: height var(--dur) var(--ease-out);
+}
+
+.navScrolled .bar {
+  height: calc(var(--nav-h) - 12px);
+}
+
+.navInner {
+  max-width: var(--shell);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* -------------------------------- BRAND -------------------------------- */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  min-width: 0;
+}
+
+.logoMark {
+  width: 38px;
+  height: 38px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  box-shadow: 0 4px 12px rgb(var(--cypress-rgb) / 0.28);
+  transition: transform var(--dur-slow) var(--ease-out), box-shadow var(--dur) var(--ease);
+}
+
+.logo:hover .logoMark {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: 0 8px 20px rgb(var(--cypress-rgb) / 0.34);
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: clamp(0.98rem, 3.4vw, 1.16rem);
+  font-weight: 500;
+  line-height: 1.16;
+  letter-spacing: 0.005em;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.logoText span {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin-top: 3px;
+}
+
+/* ------------------------------ NAV LINKS ------------------------------
+   Links now sit in soft pills rather than under a drawn hairline. A filled
+   shape reads at a glance on a busy page, and the active route no longer
+   depends on a 1px rule to be visible. */
 .links {
   display: none;
   align-items: center;
-  gap: 4px;
-  padding: 5px;
-  border-radius: var(--r-full);
-  background: rgb(var(--brand-rgb) / 0.05);
-  border: 1px solid var(--line);
+  gap: 2px;
 }
 
 .links a {
   position: relative;
-  padding: 9px 18px;
-  border-radius: var(--r-full);
-  font-size: 0.74rem;
-  letter-spacing: 0.09em;
+  padding: 9px 14px;
+  border-radius: var(--r-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
-  font-weight: 600;
   color: var(--ink-2);
   white-space: nowrap;
-  transition: color 0.25s var(--ease), background 0.25s var(--ease);
+  transition: color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
 }
 
 .links a:hover {
+  background: var(--brand-50);
   color: var(--brand-700);
-  background: rgb(255 255 255 / 0.9);
 }
 
 .linkActive {
-  color: #fff !important;
-  background: var(--grad-brand);
-  box-shadow: 0 6px 16px rgb(var(--brand-rgb) / 0.28);
+  background: var(--brand-100);
+  color: var(--brand-700) !important;
 }
 
-.linkActive:hover {
-  color: #fff !important;
-  background: var(--grad-brand) !important;
+/* Gold tick under the current route — the one ornament kept from the old bar. */
+.linkActive::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 2px;
+  width: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gold);
+  transform: translateX(-50%);
 }
 
-/* ---------- Right cluster ---------- */
+/* ------------------------------ RIGHT SIDE ------------------------------ */
 .navRight {
   display: flex;
   align-items: center;
@@ -149,151 +217,432 @@
 .statusPill {
   display: none;
   align-items: center;
-  gap: 7px;
-  padding: 7px 14px;
-  border-radius: var(--r-full);
-  background: rgb(37 211 102 / 0.1);
-  border: 1px solid rgb(37 211 102 / 0.28);
-  color: var(--whatsapp-dark);
-  font-size: 0.65rem;
+  gap: 8px;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  white-space: nowrap;
+  color: var(--brand-700);
+  padding: 7px 13px;
+  border-radius: var(--r-pill);
+  background: var(--brand-50);
+  border: 1px solid rgb(var(--cypress-rgb) / 0.16);
 }
 
+/* A static halo rather than a pulsing one: box-shadow cannot be composited,
+   so an infinite pulse repaints on the main thread for the life of the page. */
 .dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: var(--whatsapp);
-  box-shadow: 0 0 0 0 rgb(37 211 102 / 0.6);
-  animation: navPulse 2.2s ease-out infinite;
-}
-
-@keyframes navPulse {
-  0% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0.55); }
-  70% { box-shadow: 0 0 0 8px rgb(37 211 102 / 0); }
-  100% { box-shadow: 0 0 0 0 rgb(37 211 102 / 0); }
+  background: var(--success);
+  box-shadow: 0 0 0 3px rgb(63 125 84 / 0.18);
 }
 
 .bookBtn {
   display: none;
   align-items: center;
   gap: 8px;
-  background: var(--grad-brand);
+  padding: 12px 22px;
+  border-radius: var(--r-pill);
+  background: var(--brand-700);
   color: #fff;
-  padding: 12px 24px;
-  border-radius: var(--r-full);
-  font-size: 0.68rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  font-size: 0.7rem;
   font-weight: 700;
-  box-shadow: var(--sh-brand);
-  transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease);
-  white-space: nowrap;
+  letter-spacing: var(--ls-btn);
+  text-transform: uppercase;
+  box-shadow: var(--sh-brand), inset 0 0 0 1px rgb(var(--gold-rgb) / 0.45);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out),
+    background-color var(--dur) var(--ease);
 }
 
 .bookBtn:hover {
+  background: var(--dark-2);
   transform: translateY(-2px);
-  box-shadow: var(--sh-brand-hover);
+  box-shadow: var(--sh-brand-hover), inset 0 0 0 1px rgb(var(--gold-rgb) / 0.8);
 }
 
-/* Mobile-only round call button */
+.bookBtn:active {
+  transform: translateY(0);
+}
+
+/* Compact call button — mobile only. */
 .iconBtn {
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  background: var(--grad-brand);
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-2);
+  color: var(--brand-700);
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.iconBtn:hover {
+  background: var(--brand-700);
+  border-color: var(--brand-700);
   color: #fff;
-  box-shadow: 0 6px 16px rgb(var(--brand-rgb) / 0.28);
-  transition: transform 0.25s var(--ease);
 }
 
-.iconBtn:active {
-  transform: scale(0.94);
-}
-
-/* ---------- Hamburger ---------- */
+/* ------------------------------ HAMBURGER ------------------------------ */
 .menuToggle {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-content: center;
   gap: 5px;
-  width: 42px;
-  height: 42px;
-  border-radius: 13px;
-  border: 1px solid var(--line-strong);
-  background: var(--brand-50);
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-pill);
+  background: transparent;
   cursor: pointer;
-  z-index: 1102;
-  transition: background 0.25s var(--ease), border-color 0.25s var(--ease);
+  transition: border-color var(--dur-fast) var(--ease), background-color var(--dur-fast) var(--ease);
+}
+
+.menuToggle:hover {
+  border-color: var(--line-strong);
 }
 
 .menuToggle span {
   display: block;
-  width: 18px;
-  height: 2px;
+  width: 19px;
+  height: 1.5px;
   border-radius: 2px;
-  background: var(--brand-600);
-  transition: transform 0.35s var(--ease-out), opacity 0.2s var(--ease), width 0.35s var(--ease-out);
+  background: var(--ink);
+  transition: transform var(--dur) var(--ease-inout), opacity var(--dur-fast) var(--ease),
+    width var(--dur) var(--ease-inout);
 }
 
-.menuToggle span:last-child {
-  width: 12px;
-  align-self: center;
-  margin-right: -6px;
+.menuToggle span:nth-child(2) {
+  width: 13px;
+  margin-left: auto;
 }
 
-.menuToggle:hover span:last-child {
-  width: 18px;
-  margin-right: 0;
-}
-
-.menuToggleOpen {
-  background: var(--brand-600);
-  border-color: var(--brand-600);
-}
-
-.menuToggleOpen span {
-  background: #fff;
-}
-
-.menuToggleOpen span:first-child {
-  transform: translateY(7px) rotate(45deg);
+.menuToggleOpen span:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
 }
 
 .menuToggleOpen span:nth-child(2) {
   opacity: 0;
-  transform: scaleX(0.2);
+  width: 19px;
 }
 
-.menuToggleOpen span:last-child {
-  width: 18px;
-  margin-right: 0;
-  transform: translateY(-7px) rotate(-45deg);
+.menuToggleOpen span:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
-/* ---------- Breakpoints ---------- */
-@media (min-width: 640px) {
+/* ------------------------------- DRAWER ------------------------------- */
+/* Above the floating call/WhatsApp buttons (z-index 1000) so the drawer is
+   never overlapped by them while it is open. */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1040;
+  background: rgb(var(--moss-rgb) / 0.55);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--dur-slow) var(--ease), visibility var(--dur-slow);
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1050;
+  width: min(92vw, 400px);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  border-left: 1px solid var(--line);
+  box-shadow: -30px 0 80px rgb(var(--ink-rgb) / 0.22);
+  transform: translate3d(102%, 0, 0);
+  visibility: hidden;
+  transition: transform 0.66s var(--ease-out), visibility 0.66s;
+  overscroll-behavior: contain;
+}
+
+.drawerOpen {
+  transform: translate3d(0, 0, 0);
+  visibility: visible;
+}
+
+.drawerBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px var(--pad) 26px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.drawerBrand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--font-display);
+  font-size: 1.14rem;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.drawerBrand > img {
+  width: 38px;
+  height: 38px;
+  border-radius: 11px;
+  flex-shrink: 0;
+}
+
+.drawerBrand > span {
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerBrand span span {
+  font-family: var(--font-body);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin-top: 5px;
+}
+
+.closeBtn {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+  border: 1px solid var(--line-2);
+  border-radius: var(--r-pill);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease), transform var(--dur) var(--ease-out);
+}
+
+.closeBtn:hover {
+  background: var(--brand-700);
+  border-color: var(--brand-700);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+.drawerList {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0 4px;
+}
+
+.drawerItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 6px 4px;
+  font-family: var(--font-display);
+  font-size: 1.14rem;
+  font-weight: 400;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+  opacity: 0;
+  transform: translate3d(22px, 0, 0);
+  transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out),
+    color var(--dur-fast) var(--ease), padding-left var(--dur) var(--ease-out);
+}
+
+.drawerOpen .drawerItem {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.drawerItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: translateY(-50%);
+  transition: width var(--dur) var(--ease-out);
+}
+
+.drawerItem:hover,
+.drawerItemActive {
+  color: var(--brand-700);
+  padding-left: 24px;
+}
+
+.drawerItem:hover::before,
+.drawerItemActive::before {
+  width: 16px;
+}
+
+.drawerLabel {
+  margin: 24px 0 12px;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-label);
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  padding: 9px 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    border-color var(--dur-fast) var(--ease);
+}
+
+.chip:hover {
+  background: var(--brand-700);
+  border-color: var(--brand-700);
+  color: #fff;
+}
+
+.chipActive {
+  background: var(--brand-100);
+  border-color: var(--line-strong);
+  color: var(--brand-700);
+}
+
+.drawerInfo {
+  margin-top: 24px;
+  padding: 20px;
+  border-radius: var(--r-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+
+.drawerInfo a {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  color: var(--brand-700);
+  letter-spacing: 0.01em;
+}
+
+.drawerInfo p {
+  font-size: var(--t-xs);
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+.drawerFooter {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 16px var(--pad) max(16px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.drawerLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 52px;
+  padding: 12px;
+  border-radius: var(--r-pill);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: var(--ls-btn);
+  text-transform: uppercase;
+  text-align: center;
+  transition: transform var(--dur) var(--ease-out), background-color var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+}
+
+.drawerLink:first-child {
+  background: var(--brand-700);
+  color: #fff;
+  box-shadow: var(--sh-brand);
+}
+
+.drawerLink:first-child:hover {
+  background: var(--dark-2);
+  transform: translateY(-2px);
+}
+
+.drawerLink:last-child {
+  border: 1px solid var(--line-strong);
+  color: var(--brand-700);
+}
+
+.drawerLink:last-child:hover {
+  background: var(--brand-700);
+  border-color: var(--brand-700);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ------------------------------ BREAKPOINTS ------------------------------ */
+/* Below this the brand line, the call button and the toggle stop fitting on
+   one row, so the strapline steps aside rather than forcing a squeeze. */
+@media (max-width: 479px) {
+  .logoText span {
+    display: none;
+  }
+  .logoMark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+  }
+  .navInner {
+    gap: 10px;
+  }
+}
+
+/* Below 900px `--topbar-h` is 0 (theme.css), so the strip has no height at all
+   on phones; from 900 to 1180 it keeps the hours and phone but drops the
+   address, which is the first thing to run out of room. */
+@media (max-width: 1180px) {
+  /* Direct child only — the hours span is also a `.topItem` and also a first
+     child, inside `.topRight`. */
+  .topbarInner > .topItem {
+    display: none;
+  }
+  .topbarInner {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 560px) {
   .statusPill {
     display: inline-flex;
   }
 }
 
-@media (min-width: 980px) {
-  .logoText {
-    font-size: 1.15rem;
-  }
-}
-
-/* The pill bar carries seven links. Below this width they cannot clear the
-   logo and the Book Now button, so the drawer stays in charge instead. */
-@media (min-width: 1100px) {
+@media (min-width: 1080px) {
   .links {
     display: flex;
   }
@@ -304,220 +653,31 @@
   .menuToggle {
     display: none;
   }
-  /* 1100–1399px is the tight band: pills shrink and the decorative status
-     pill steps aside so the seven links never crowd the logo. */
+  .logoMark {
+    width: 44px;
+    height: 44px;
+    border-radius: 13px;
+  }
+}
+
+/* Between 1080 and 1240 the seven pills and the brand block compete for the
+   same row, so the pills tighten instead of wrapping. */
+@media (min-width: 1080px) and (max-width: 1240px) {
   .links a {
-    padding: 9px 13px;
-    font-size: 0.71rem;
-    letter-spacing: 0.07em;
+    padding: 9px 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.05em;
   }
   .statusPill {
     display: none;
   }
 }
 
-/* Past 1400px there is room for everything at full size. */
-@media (min-width: 1400px) {
-  .links {
-    gap: 6px;
+/* The drawer holds every route, including the ten area pages, so it stays
+   reachable on tablets where the desktop bar has not yet appeared. */
+@media (min-width: 1080px) {
+  .drawer,
+  .overlay {
+    display: none;
   }
-  .links a {
-    padding: 10px 20px;
-    font-size: 0.74rem;
-    letter-spacing: 0.09em;
-  }
-  .statusPill {
-    display: inline-flex;
-  }
-}
-
-/* ===================== OVERLAY ===================== */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background: rgb(var(--ink-rgb) / 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.35s var(--ease);
-  z-index: 1100;
-}
-
-.overlayOpen {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-/* ===================== DRAWER / SIDEBAR ===================== */
-.drawer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100dvh;
-  width: min(88vw, 372px);
-  background: var(--surface);
-  box-shadow: -20px 0 60px rgb(var(--ink-rgb) / 0.3);
-  z-index: 1101;
-  display: flex;
-  flex-direction: column;
-  transform: translateX(101%);
-  transition: transform 0.45s var(--ease-out), visibility 0s linear 0.45s;
-  overflow: hidden;
-  visibility: hidden;
-}
-
-.drawerOpen {
-  transform: translateX(0);
-  visibility: visible;
-  transition: transform 0.45s var(--ease-out), visibility 0s;
-}
-
-.drawerBody {
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 10px;
-}
-
-.drawerHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 20px 24px 18px;
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
-}
-
-.drawerBrand {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: var(--ink);
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.drawerBrand span {
-  font-size: 0.5rem;
-  font-family: var(--font-body);
-  font-weight: 500;
-  letter-spacing: 0.17em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.closeBtn {
-  width: 36px;
-  height: 36px;
-  border: none;
-  background: none;
-  color: var(--ink);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  transition: color 0.25s var(--ease), opacity 0.25s var(--ease);
-  flex-shrink: 0;
-  opacity: 0.6;
-}
-
-.closeBtn:hover {
-  opacity: 1;
-}
-
-/* ---------- Nav list (plain text links) ---------- */
-.drawerList {
-  display: flex;
-  flex-direction: column;
-  padding: 10px 0;
-}
-
-.drawerItem {
-  position: relative;
-  padding: 16px 24px;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--ink);
-  opacity: 0;
-  transform: translateX(16px);
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out),
-    background 0.2s var(--ease), color 0.2s var(--ease);
-}
-
-.drawerOpen .drawerItem {
-  opacity: 1;
-  transform: none;
-}
-
-.drawerItem:hover,
-.drawerItem:active {
-  background: var(--brand-50);
-  color: var(--brand-700);
-}
-
-.drawerItemActive {
-  font-weight: 600;
-  color: var(--brand-700);
-}
-
-.drawerItemActive::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 12px;
-  bottom: 12px;
-  width: 3px;
-  border-radius: 0 3px 3px 0;
-  background: var(--brand-600);
-}
-
-/* ---------- Contact line ---------- */
-.drawerInfo {
-  margin-top: 6px;
-  padding: 20px 24px 0;
-  border-top: 1px solid var(--line);
-}
-
-.drawerInfo a {
-  display: inline-block;
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--ink);
-  letter-spacing: 0.01em;
-}
-
-.drawerInfo p {
-  font-size: 0.78rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-/* ---------- Drawer footer (plain text links) ---------- */
-.drawerFooter {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 8px 0 calc(12px + env(safe-area-inset-bottom));
-  border-top: 1px solid var(--line);
-}
-
-.drawerLink {
-  padding: 15px 24px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--ink);
-  transition: background 0.2s var(--ease), color 0.2s var(--ease);
-}
-
-.drawerLink:hover,
-.drawerLink:active {
-  background: var(--brand-50);
-  color: var(--brand-700);
 }

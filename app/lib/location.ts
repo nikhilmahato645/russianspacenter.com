@@ -96,7 +96,6 @@ export type LocationContent = {
   };
 
   faqs: Faq[];
-  keywords: string[];
 
   /** Approximate centroid of the served area, for the `areaServed` node. */
   geo: { lat: number; lng: number };
@@ -112,7 +111,6 @@ export type LocationContent = {
   seo: {
     title: string;
     description: string;
-    keywords: string;
     ogTitle: string;
     ogDescription: string;
     ogImageAlt: string;

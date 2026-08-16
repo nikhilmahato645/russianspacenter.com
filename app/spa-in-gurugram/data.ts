@@ -20,7 +20,7 @@ export const GURUGRAM: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa11.jpg",
   heroBadge: "Serving Cyber City, Udyog Vihar & DLF · Open 24 Hours",
-  h1: { lead: "Spa near", em: "Gurugram", tail: "— Open Long After Yours Closes" },
+  h1: { lead: "Best Spa & Body Massage near", em: "Gurugram" },
   heroText: [
     "The problem with booking a spa in Gurugram is rarely the spa — it is the clock. Most take their last appointment between 9 and 11 PM, which is roughly when a Cyber City or Udyog Vihar day actually ends. We are twenty minutes up NH-48 at Defence Enclave, Mahipalpur, and we never close.",
     "Deep tissue and sports recovery by certified therapists, authentic Russian Banya with birch venik, and private couples suites. A 10.30 PM booking after a long release week is entirely normal here, and it costs exactly what the same session costs at noon.",
@@ -227,31 +227,13 @@ export const GURUGRAM: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Gurugram",
-    "spa in Gurgaon",
-    "best spa near Gurugram",
-    "body massage in Gurgaon",
-    "massage centre near Gurugram",
-    "Russian spa near Gurgaon",
-    "spa near Cyber City",
-    "spa near Udyog Vihar",
-    "24 hour spa Gurgaon",
-    "sports massage Gurugram",
-    "deep tissue massage Gurgaon",
-    "couples spa near Gurgaon",
-    "spa near MG Road Gurgaon",
-    "night spa Gurugram",
-  ],
 
   geo: { lat: 28.4595, lng: 77.0266 },
 
   seo: {
-    title: "Spa near Gurugram | 24/7 Russian Banya & Massage, 20 Min from Cyber City",
+    title: "Spa & Body Massage near Gurugram | Russian Spa Centre",
     description:
-      "Spa for Gurugram — twenty minutes from Cyber City up NH-48 and open 24 hours, when Gurugram spas close by 11 PM. Russian Banya, deep tissue, sports recovery and couples suites. No night surcharge. Call +91 9999999999",
-    keywords:
-      "spa in gurugram, spa in gurgaon, best spa gurugram, body massage gurgaon, massage centre gurugram, russian spa gurgaon, spa near cyber city, spa near udyog vihar, spa near mg road gurgaon, luxury spa gurugram, deep tissue massage gurgaon, sports massage gurugram, swedish massage gurgaon, thai spa gurugram, couples spa gurgaon, hot stone massage gurugram, 24 hour spa gurgaon, spa near dlf phase 2, spa near golf course road, full body massage gurgaon, spa for men gurugram, ladies spa gurgaon, spa near iffco chowk, night spa gurugram",
+      "Twenty minutes from Cyber City up NH-48 and open all night, when Gurugram spas close by 11 PM. Body massage, deep tissue and the Russian Banya.",
     ogTitle: "Spa near Gurugram | Open 24/7, 20 Minutes from Cyber City",
     ogDescription:
       "Gurugram's spas take their last booking at eleven. We take yours at any hour. Russian Banya, deep tissue and sports recovery, twenty minutes up NH-48.",

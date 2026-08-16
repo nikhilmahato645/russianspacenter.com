@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Breadcrumb from "../components/Breadcrumb";
 import FaqAccordion from "../components/FaqAccordion";
+import { AREA_INDEX } from "../lib/location";
 import {
   ADDRESS,
   DIRECTIONS_URL,
@@ -24,8 +25,10 @@ import {
   MAP_EMBED_URL,
   PHONE_DISPLAY,
   PHONE_E164,
+  SERVICE_PINCODES,
   waLink,
 } from "../lib/site";
+import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { CONTACT_FAQS, REACH_US } from "./data";
 
@@ -100,18 +103,6 @@ const TREATMENTS = [
   "Not sure — please advise",
 ];
 
-const KEYWORDS = [
-  "contact spa in Mahipalpur",
-  "spa phone number Delhi",
-  "book massage near IGI Airport",
-  "spa address Mahipalpur",
-  "24 hour spa contact Delhi",
-  "massage booking Aerocity",
-  "spa near Aerocity hotels",
-  "spa directions Mahipalpur",
-  "WhatsApp spa booking Delhi",
-  "spa near Dwarka contact",
-];
 
 type Errors = Partial<Record<"name" | "phone" | "treatment", string>>;
 
@@ -425,6 +416,40 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* SERVICE AREA — answers "do you cover where I am?" and doubles as a
+          contextual link into every area page. */}
+      <section className={`${styles.section} ${styles.sectionTight}`} id="service-area">
+        <div className={styles.sectionHead} data-reveal>
+          <p className="section-label">Where We Take Bookings From</p>
+          <h2 className="section-title">
+            Areas &amp; Pincodes <em>We Serve</em>
+          </h2>
+          <p>
+            Treatments all take place at the Mahipalpur premises — there is no second branch. These are the
+            catchments guests most often travel from, each with a page covering the route and the drive time.
+          </p>
+        </div>
+
+        <div className={styles.grid3} data-reveal>
+          {AREA_INDEX.map((area) => (
+            <a key={area.path} href={area.path} className={styles.areaLinkCard}>
+              <span className={styles.areaLinkTitle}>
+                <MapPin size={14} strokeWidth={2} />
+                {area.label}
+              </span>
+              <span className={styles.areaLinkDrive}>{area.drive}</span>
+              <span className={styles.areaLinkTeaser}>{area.teaser}</span>
+            </a>
+          ))}
+        </div>
+
+        <div className={styles.tableNote} style={{ marginTop: "28px" }} data-reveal>
+          <strong>Pincodes covered:</strong> {SERVICE_PINCODES.join(" · ")}. We also take bookings from Defence
+          Colony and the wider South Delhi, Gurugram, Faridabad, Noida and Ghaziabad. If your pincode is not
+          listed, call or message — the spa is open every hour and travel time is usually the only question.
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className={`${styles.section} ${styles.sectionTight}`} id="faq">
         <div className={styles.sectionCenterHead} data-reveal>
@@ -437,6 +462,8 @@ export default function Contact() {
       </section>
 
       {/* CTA */}
+      <AlsoVisit path={"/contact/"} />
+
       <section className={styles.ctaSection}>
         <div data-reveal>
           <p className={`section-label ${styles.ctaLabel}`}>We&apos;re Awake</p>
@@ -459,15 +486,6 @@ export default function Contact() {
           </p>
         </div>
       </section>
-
-      {/* KEYWORDS */}
-      <div className={styles.keywordCloud} style={{ paddingTop: "clamp(48px, 7vw, 84px)" }}>
-        {KEYWORDS.map((kw) => (
-          <span key={kw} className={styles.keywordPill}>
-            {kw}
-          </span>
-        ))}
-      </div>
     </>
   );
 }

@@ -15,7 +15,7 @@ export const GREEN_PARK: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa6.jpg",
   heroBadge: "The Shortest South Delhi Run To Us · 20 Minutes",
-  h1: { lead: "Spa in", em: "Green Park", tail: "— Ayurvedic, Aromatherapy & Banya" },
+  h1: { lead: "Best Spa & Body Massage near", em: "Green Park" },
   heroText: [
     "Down Aurobindo Marg, onto the Outer Ring Road, and you are here in twenty minutes — the shortest drive to our door of any South Delhi neighbourhood, and usually the fastest after 8 PM.",
     "Russian Spa Centre pairs an authentic Russian Banya with Ayurvedic Abhyanga, aromatherapy blended after a consultation, and reflexology. Private rooms, certified therapists, and doors that never close — including at 6 AM.",
@@ -232,31 +232,13 @@ export const GREEN_PARK: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Green Park",
-    "best spa in Green Park",
-    "body massage Green Park",
-    "Ayurvedic massage Green Park",
-    "aromatherapy massage South Delhi",
-    "massage centre near Green Park",
-    "spa near Green Park Metro",
-    "spa near AIIMS Delhi",
-    "reflexology South Delhi",
-    "Russian spa near Green Park",
-    "24 hour spa near Green Park",
-    "spa near Yusuf Sarai",
-    "morning spa Delhi",
-    "spa membership South Delhi",
-  ],
 
   geo: { lat: 28.5588, lng: 77.2065 },
 
   seo: {
-    title: "Spa in Green Park | Ayurvedic, Aromatherapy & Russian Banya | Open 24/7",
+    title: "Spa & Body Massage near Green Park | Russian Spa Centre",
     description:
-      "Spa for Green Park — 20 minutes via Aurobindo Marg, the shortest South Delhi run to us. Ayurvedic Abhyanga, aromatherapy, reflexology and an authentic Russian Banya. Open 24 hours, 6 AM slots available. Call +91 9999999999",
-    keywords:
-      "spa in Green Park, best spa in Green Park, body massage Green Park, Ayurvedic massage Green Park, Abhyanga massage Delhi, aromatherapy massage Green Park, reflexology South Delhi, massage centre Green Park, spa near Green Park Metro, spa near Green Park Market, spa near AIIMS, spa near Safdarjung Hospital, spa near Yusuf Sarai, Russian spa near Green Park, 24 hour spa South Delhi, full body massage Green Park, spa membership South Delhi, Russian Banya Delhi, spa for men Green Park, ladies spa Green Park, morning spa Delhi, prenatal massage South Delhi",
+      "Twenty minutes via Aurobindo Marg, the shortest South Delhi run to us. Ayurvedic Abhyanga, aromatherapy and reflexology from 6 AM, open 24 hours.",
     ogTitle: "Spa in Green Park | Ayurvedic, Aromatherapy & Banya, 20 Minutes Away",
     ogDescription:
       "Ayurvedic Abhyanga, aromatherapy and reflexology plus an authentic Russian Banya — 20 minutes from Green Park Market, open 24 hours including 6 AM.",

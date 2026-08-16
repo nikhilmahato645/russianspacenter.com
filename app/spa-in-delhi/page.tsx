@@ -9,7 +9,6 @@ const { seo, path } = DELHI;
 export const metadata: Metadata = {
   title: seo.title,
   description: seo.description,
-  keywords: seo.keywords,
   robots: {
     index: true,
     follow: true,

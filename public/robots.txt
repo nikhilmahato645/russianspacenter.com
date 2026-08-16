@@ -1,88 +1,29 @@
 # ==============================================================
 # robots.txt — russianspacenter.com
-# Updated: 2026-07-27
+#
+# The site is a 17-page static export. Everything public is
+# crawlable; only Next.js build internals are held back, and the
+# static asset folder inside them is re-allowed so that Google can
+# fetch the CSS, JS and fonts it needs to render the pages.
 # ==============================================================
 
-# ---------------------------------------------------------------
-# Allow ALL major search engine crawlers
-# ---------------------------------------------------------------
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-# ---------------------------------------------------------------
-# Global rules (all other crawlers)
-# ---------------------------------------------------------------
 User-agent: *
 Allow: /
 
-# Block internal Next.js system paths — not useful for SEO
+# Build internals — no content, but the asset folder must stay fetchable
+# or Google renders the pages unstyled.
 Disallow: /_next/
-Disallow: /api/
-Disallow: /_error
-Disallow: /404
-Disallow: /500
+Allow: /_next/static/
 
-# Block any admin, dashboard, or private paths (add yours here)
-Disallow: /admin/
-Disallow: /dashboard/
-Disallow: /private/
-
-# Block duplicate query-string URLs that could cause thin content
+# Tracking-parameter duplicates of real pages.
 Disallow: /*?*utm_source=
 Disallow: /*?*utm_medium=
 Disallow: /*?*utm_campaign=
-Disallow: /*?*ref=
 Disallow: /*?*fbclid=
 Disallow: /*?*gclid=
 
-# Allow crawling of all static assets needed for rendering
-Allow: /_next/static/
-Allow: /images/
-Allow: /icons/
-Allow: /fonts/
-Allow: /*.css
-Allow: /*.js
-Allow: /*.jpg
-Allow: /*.jpeg
-Allow: /*.png
-Allow: /*.webp
-Allow: /*.svg
-Allow: /*.gif
+# No Crawl-delay directive.
+# Googlebot ignores it; Bing and Yandex honour it, and the previous value of 10
+# seconds throttled them for no benefit on a site this small.
 
-# ---------------------------------------------------------------
-# Crawl delay (optional — helps avoid server overload)
-# Note: Googlebot ignores Crawl-delay; this affects others only
-# ---------------------------------------------------------------
-Crawl-delay: 10
-
-# ---------------------------------------------------------------
-# Sitemap location
-# ---------------------------------------------------------------
 Sitemap: https://russianspacenter.com/sitemap.xml

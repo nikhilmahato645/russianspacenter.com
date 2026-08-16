@@ -16,7 +16,7 @@ export const SAKET: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa13.jpg",
   heroBadge: "Serving Saket & Malviya Nagar · Open 24 Hours",
-  h1: { lead: "Spa in", em: "Saket", tail: "— Russian Banya 25 Minutes Away" },
+  h1: { lead: "Best Spa & Body Massage near", em: "Saket" },
   heroText: [
     "Saket District Centre empties by eleven and the mall spas take their last booking well before that. We are twenty-five minutes west at Defence Enclave, Mahipalpur, and we do not close — not at midnight, not at four in the morning, not on a public holiday.",
     "Authentic Russian Banya with birch venik, deep tissue work by certified therapists, and private couples suites. Press Enclave Marg to the Outer Ring Road gets you here; free parking is waiting when you arrive.",
@@ -230,31 +230,13 @@ export const SAKET: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Saket",
-    "best spa in Saket",
-    "body massage in Saket",
-    "massage centre near Saket",
-    "Russian spa near Saket",
-    "spa near Select Citywalk",
-    "spa near Saket Metro",
-    "24 hour spa South Delhi",
-    "couples spa near Saket",
-    "deep tissue massage Saket",
-    "spa near Malviya Nagar",
-    "Russian Banya South Delhi",
-    "full body massage Saket",
-    "night spa Saket",
-  ],
 
   geo: { lat: 28.5245, lng: 77.2066 },
 
   seo: {
-    title: "Spa in Saket | Russian Banya & Body Massage 25 Min Away | Open 24/7",
+    title: "Spa & Body Massage near Saket | Russian Spa Centre",
     description:
-      "Spa for Saket — 25 minutes from Select Citywalk and open 24 hours. Authentic Russian Banya, deep tissue massage, private couples suites, certified therapists, free parking. No night surcharge. Call +91 9999999999",
-    keywords:
-      "spa in Saket, best spa in Saket, body massage in Saket, massage centre Saket, Russian spa near Saket, spa near Select Citywalk, spa near Saket Metro, 24 hour spa South Delhi, couples spa Saket, deep tissue massage Saket, full body massage Saket, spa near Malviya Nagar, spa near Sheikh Sarai, spa near Pushp Vihar, luxury spa South Delhi, aromatherapy massage Saket, hot stone massage Saket, Russian Banya South Delhi, spa for men Saket, ladies spa Saket, massage near Max Hospital Saket, night spa Saket",
+      "Twenty-five minutes from Select Citywalk via Press Enclave Marg. Long-format spa rituals, body massage and an authentic Russian Banya, open 24/7.",
     ogTitle: "Spa in Saket | Russian Banya & Massage, 25 Minutes Away",
     ogDescription:
       "Saket's spas shut with the district centre. We don't. Authentic Russian Banya, deep tissue and couples suites, 25 minutes down Press Enclave Marg, open all night.",

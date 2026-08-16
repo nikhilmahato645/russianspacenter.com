@@ -13,7 +13,7 @@ export const VASANT_KUNJ: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa6.jpg",
   heroBadge: "Twelve Minutes From The Vasant Kunj Malls",
-  h1: { lead: "Spa in", em: "Vasant Kunj", tail: "— For People Who Come Back" },
+  h1: { lead: "Best Spa & Body Massage for", em: "Vasant Kunj" },
   heroText: [
     "Most of our Vasant Kunj guests are not visiting once. They are on a membership, they have a therapist they ask for by name, and they book the same Thursday evening slot for months at a time. That changes what a spa needs to be good at.",
     "We are twelve to fifteen minutes down Vasant Kunj Road, past the mall complex, at Defence Enclave in Mahipalpur. Close enough for a weeknight session after work, far enough that you leave the neighbourhood behind for an hour.",
@@ -220,31 +220,13 @@ export const VASANT_KUNJ: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Vasant Kunj",
-    "massage in Vasant Kunj",
-    "body spa Vasant Kunj",
-    "spa near DLF Promenade",
-    "spa near Ambience Mall Vasant Kunj",
-    "couples spa Vasant Kunj",
-    "Ayurvedic massage Vasant Kunj",
-    "prenatal massage South Delhi",
-    "spa membership Vasant Kunj",
-    "massage near Vasant Vihar",
-    "ladies spa Vasant Kunj",
-    "deep tissue massage Vasant Kunj",
-    "spa near Kishangarh",
-    "senior citizen spa Delhi",
-  ],
 
   geo: { lat: 28.52, lng: 77.159 },
 
   seo: {
-    title: "Spa in Vasant Kunj | Ayurvedic, Couples & Prenatal Massage 12 Min Away | Russian Spa Centre",
+    title: "Spa & Body Massage for Vasant Kunj | Russian Spa Centre",
     description:
-      "Spa serving Vasant Kunj, 12–15 min from DLF Promenade & Ambience Mall. Ayurvedic Abhyanga, couples suites, prenatal massage. 5-session membership ₹11,900, 10% senior discount, open 24/7. Call +91 9999999999",
-    keywords:
-      "spa in Vasant Kunj, massage in Vasant Kunj, body spa Vasant Kunj, spa near DLF Promenade, spa near Ambience Mall Vasant Kunj, couples spa Vasant Kunj, Ayurvedic massage Vasant Kunj, prenatal massage South Delhi, spa membership Vasant Kunj, massage near Vasant Vihar, ladies spa Vasant Kunj, deep tissue massage Vasant Kunj, spa near Kishangarh, senior citizen spa Delhi",
+      "Twelve to fifteen minutes from the Vasant Kunj malls. Ayurvedic Abhyanga, couples suites, prenatal massage and five-session membership pricing.",
     ogTitle: "Spa in Vasant Kunj | For People Who Come Back",
     ogDescription:
       "12 minutes from the Vasant Kunj malls. Ayurvedic Abhyanga, weekend couples suites, prenatal massage, 5-session membership and a standing senior discount.",

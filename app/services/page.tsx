@@ -6,11 +6,9 @@ import { LOCAL_BUSINESS, SITE_URL, breadcrumbLd, faqLd, jsonLd } from "../lib/si
 const PATH = "/services/";
 
 export const metadata: Metadata = {
-  title: "Spa & Massage Services in Mahipalpur | Russian Banya, Body Massage & Couples Spa | Open 24/7",
+  title: "Spa & Massage Services in Mahipalpur | Russian Spa Centre",
   description:
-    "Explore 20+ spa services in Mahipalpur, Delhi NCR — authentic Russian Banya, Swedish, deep tissue, Thai, aromatherapy, hot stone, couples spa & airport express. Certified therapists, private rooms, open 24/7. Call +91 9999999999",
-  keywords:
-    "spa services in Mahipalpur, body massage Mahipalpur, Russian Banya Delhi, deep tissue massage near IGI Airport, Swedish massage Aerocity, Thai massage Delhi, aromatherapy massage Mahipalpur, hot stone therapy Delhi NCR, couples spa package Delhi, reflexology near Delhi Airport, Ayurvedic massage Mahipalpur, prenatal massage Delhi, sports massage Aerocity, 24 hour massage centre Delhi, full body massage Dwarka, spa treatments Vasant Kunj, airport layover massage",
+    "Swedish, deep tissue, Thai, aromatherapy, hot stone, reflexology and the Russian Banya — with durations and prices, in Mahipalpur. Open 24 hours.",
   robots: {
     index: true,
     follow: true,

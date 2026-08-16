@@ -14,9 +14,9 @@ export const MAHIPALPUR: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa14.jpg",
   heroBadge: "Our Premises · Defence Enclave, Open 24 Hours",
-  h1: { lead: "Spa in", em: "Mahipalpur", tail: "— This Is Where We Are" },
+  h1: { lead: "Best Body Massage &", em: "Spa in Mahipalpur" },
   heroText: [
-    "Office No. 118, Defence Enclave, adjoining Aerocity. Not a catchment area, not a franchise — the spa itself, with the Banya, the couples suites, the relaxation lounge and every therapist we employ under one roof.",
+    "Full body massage, deep tissue, Thai, aromatherapy and the Russian Banya — all at Office No. 118, Defence Enclave, adjoining Aerocity. Not a catchment area and not a franchise: the spa itself, with every therapist we employ under one roof.",
     "Ten minutes from IGI Terminal 3, two from Mahipalpur Metro, and open every hour of every day of the year. Free parking on site, and a therapist available whenever you walk in.",
   ],
   heroStats: [
@@ -28,10 +28,11 @@ export const MAHIPALPUR: LocationContent = {
 
   intro: {
     label: "The Premises",
-    titleLead: "One Address,",
-    titleEm: "Everything Under It",
+    titleLead: "Where Your Body Massage",
+    titleEm: "Actually Happens",
     paras: [
       "Mahipalpur is where the spa physically is: Office No. 118, Defence Enclave, on the Aerocity side of NH-8 and two minutes from Mahipalpur Metro. Every treatment we advertise anywhere on this site happens in this building — there is no second branch, no partner outlet and no franchise using our name.",
+      "A full body massage here runs 60, 75 or 90 minutes depending on the technique, always in a private room with a door. Swedish for general relaxation, deep tissue for a specific chronic complaint, Thai if you would rather be stretched than oiled, aromatherapy if sleep or stress is the reason you came. Your therapist recommends during the consultation rather than selling from a menu.",
       "Inside are eleven private treatment rooms with doors rather than curtains, two couples suites sized for two therapists working at once, the Banya wing with its steam room and cold plunge, changing rooms with lockers and showers, and a relaxation lounge where nobody moves you along when your hour is up.",
       "The neighbourhood earns its reputation honestly. Mahipalpur sits at the point where the airport, the Aerocity hotel strip and South-West Delhi meet, which is why a spa here can be equally useful to a transiting passenger at 3 AM, a hotel guest at 11 PM and a Defence Enclave resident on a Sunday afternoon. Being open around the clock is what makes that work.",
     ],
@@ -158,8 +159,15 @@ export const MAHIPALPUR: LocationContent = {
     titleLead: "What Actually Happens",
     titleEm: "Inside The Spa",
     standfirst:
-      "Most people booking a spa in Mahipalpur for the first time have no clear picture of what the next two hours hold — particularly if the Banya is involved. Here is the whole thing, room by room, in the order you will meet it.",
+      "Most people booking a body massage in Mahipalpur for the first time have no clear picture of what the next two hours hold — particularly if the Banya is involved. Here is the whole thing, room by room, in the order you will meet it.",
     sections: [
+      {
+        heading: "Choosing the right body massage for what is actually wrong",
+        paras: [
+          "The phrase \"full body massage\" covers four quite different treatments, and picking the wrong one is the most common reason a session disappoints. Swedish is long, flowing, medium-pressure work over the whole body — the right choice if you are tired, stressed or simply overdue, and the correct first booking for most people. Deep tissue is slower and much firmer, worked layer by layer into one or two problem areas rather than spread evenly; book it for a locked shoulder or a lower back that has hurt for months, not for general tiredness.",
+          "Thai massage uses no oil at all. You stay clothed while the therapist moves you through assisted stretches and presses along the body's energy lines, and you leave feeling lengthened and alert rather than drowsy — good before a flight, less good if you wanted to fall asleep. Aromatherapy is a gentler full-body treatment built around an essential-oil blend chosen after a short conversation about sleep, stress or muscle tension. If you genuinely cannot decide, say what your week has been like and let the therapist choose; that is what the consultation is for.",
+        ],
+      },
       {
         heading: "Arrival, consultation and the two minutes that matter",
         paras: [
@@ -199,6 +207,14 @@ export const MAHIPALPUR: LocationContent = {
 
   faqs: [
     {
+      q: "Where can I get a good body massage in Mahipalpur?",
+      a: "Russian Spa Centre, Office No. 118, Defence Enclave, Mahipalpur. Full body massage is available round the clock in private rooms with doors rather than curtains — Swedish from ₹2,800 for 60 minutes, deep tissue from ₹3,400, Thai from ₹3,200 and aromatherapy from ₹3,000. Every rate includes the room, robe, locker, shower, fresh linens and herbal tea.",
+    },
+    {
+      q: "How long should a full body massage be?",
+      a: "Sixty minutes covers the whole body at a comfortable pace and suits most first visits. Choose 90 minutes if you want a specific problem area worked properly — an hour is rarely long enough to release chronic tension in a shoulder or lower back and still cover everything else. The 45-minute express exists for guests working around a flight.",
+    },
+    {
       q: "Which is the best spa in Mahipalpur near IGI Airport?",
       a: "Russian Spa Centre at Office No. 118, Defence Enclave, is the spa most often named for Mahipalpur — authentic Russian Banya with venik, eleven private treatment rooms, two couples suites, certified therapists and 24-hour opening, ten minutes from IGI Terminal 3 and two minutes from Mahipalpur Metro.",
     },
@@ -228,34 +244,16 @@ export const MAHIPALPUR: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Mahipalpur",
-    "best spa Mahipalpur",
-    "Russian spa Mahipalpur",
-    "body massage Mahipalpur",
-    "massage centre Mahipalpur",
-    "Russian Banya Mahipalpur",
-    "spa near IGI Airport",
-    "spa near Aerocity",
-    "24 hour spa Mahipalpur",
-    "couples spa Mahipalpur",
-    "deep tissue massage Mahipalpur",
-    "full body massage Mahipalpur",
-    "spa near Mahipalpur Metro",
-    "luxury spa Delhi NCR",
-  ],
 
   geo: { lat: 28.5432, lng: 77.1234 },
 
   seo: {
-    title: "Best Spa in Mahipalpur Near IGI Airport | Russian Banya & Massage | Open 24/7",
+    title: "Best Body Massage & Spa in Mahipalpur | Russian Spa Centre",
     description:
-      "Russian Spa Centre, Office No. 118 Defence Enclave, Mahipalpur — authentic Russian Banya with venik, eleven private rooms, couples suites and certified therapists. 10 minutes from IGI Airport, open 24/7, free parking. Call +91 9999999999",
-    keywords:
-      "spa in mahipalpur, best spa mahipalpur, spa near igi airport, body massage mahipalpur, russian spa mahipalpur, luxury spa mahipalpur, massage centre mahipalpur, spa near aerocity, russian banya mahipalpur, deep tissue massage mahipalpur, swedish massage mahipalpur, thai spa mahipalpur, aromatherapy mahipalpur, couples spa mahipalpur, hot stone therapy mahipalpur, reflexology mahipalpur, sports massage mahipalpur, 24 hour spa mahipalpur, spa near delhi airport, mahipalpur massage centre, full body massage mahipalpur, spa for men mahipalpur, ladies spa mahipalpur, affordable spa mahipalpur, spa near mahipalpur metro",
-    ogTitle: "Best Spa in Mahipalpur Near IGI Airport | Russian Spa Centre",
+      "Full body massage, deep tissue, Thai and authentic Russian Banya at Defence Enclave, Mahipalpur. Private rooms, certified therapists, open 24 hours.",
+    ogTitle: "Best Body Massage & Spa in Mahipalpur | Russian Spa Centre",
     ogDescription:
-      "The premises itself: Russian Banya with venik, eleven private rooms and two couples suites at Defence Enclave, Mahipalpur. Ten minutes from IGI Airport, open 24/7.",
-    ogImageAlt: "Russian Spa Centre — the spa in Mahipalpur, Defence Enclave, New Delhi",
+      "Swedish, deep tissue, Thai, aromatherapy and the Russian Banya — in private rooms at Defence Enclave, Mahipalpur. Ten minutes from IGI Airport, open every hour.",
+    ogImageAlt: "Treatment room at Russian Spa Centre, Defence Enclave, Mahipalpur",
   },
 };

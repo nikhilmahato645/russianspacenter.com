@@ -1,5 +1,3 @@
-"use client";
-
 import {
   MapPin,
   Plane,
@@ -35,6 +33,9 @@ import {
   Shirt,
   CalendarDays,
 } from "lucide-react";
+import Breadcrumb from "../components/Breadcrumb";
+import { PHONE_DISPLAY, PHONE_E164, SITE_URL, breadcrumbLd, jsonLd, waLink } from "../lib/site";
+import AlsoVisit from "../components/AlsoVisit";
 import styles from "./About.module.css";
 
 const STATS = [
@@ -76,42 +77,42 @@ const LOCATIONS = [
   {
     icon: MapPin,
     name: "Spa in Mahipalpur",
-    desc: "Our flagship location in the heart of Mahipalpur, just minutes from IGI Airport. The most popular spa destination in the area.",
+    desc: "The premises itself — every treatment room, the Banya wing and the couples suites are here at Defence Enclave.",
     distance: "2 min from Mahipalpur Metro",
     link: "/spa-in-mahipalpur/",
   },
   {
     icon: Plane,
     name: "Spa in Aerocity",
-    desc: "Luxury wellness for business travelers and hotel guests. Premium facilities with executive packages.",
+    desc: "Five minutes across NH-8 from the hotel strip, with complimentary pickup on bookings of 90 minutes or longer.",
     distance: "5 min from Aerocity Metro",
     link: "/spa-in-aerocity/",
   },
   {
     icon: Building2,
     name: "Spa in Dwarka",
-    desc: "Serving Dwarka sector residents with the same premium quality treatments. Family-friendly environment.",
+    desc: "Around fifteen minutes east via the Dwarka Link Road, with free on-site parking when you arrive.",
     distance: "10 min from Dwarka Sector 10",
     link: "/locations/#areas",
   },
   {
     icon: TreePine,
     name: "Spa in Vasant Kunj",
-    desc: "Peaceful retreat for South Delhi residents. Surrounded by greenery for added relaxation.",
+    desc: "Twelve to fifteen minutes past the mall complex — the catchment our regulars most often travel from.",
     distance: "8 min from Vasant Kunj Mall",
     link: "/spa-in-vasant-kunj/",
   },
   {
     icon: PlaneTakeoff,
     name: "Spa Near IGI Airport",
-    desc: "Perfect for travelers. Open 24/7 with express treatments for layovers and flight delays.",
+    desc: "Ten to twelve minutes from Terminal 3 at any hour, with a 45-minute express option built for tight layovers.",
     distance: "10 min from T3 Arrival",
     link: "/locations/#travel-times",
   },
   {
     icon: Flag,
     name: "Russian Spa Mahipalpur",
-    desc: "Authentic Russian Banya specialists. The only place in Delhi NCR with genuine Venik treatments.",
+    desc: "The same address as above — this page covers the Banya cycle, the venik treatment and what a first visit involves.",
     distance: "Main Location - Mahipalpur",
     link: "/spa-in-mahipalpur/",
   },
@@ -126,7 +127,7 @@ const PILLARS = [
   {
     icon: Gem,
     title: "Uncompromising Quality",
-    desc: "From the essential oils we use to the thread count of our linens, every detail matters. We use only therapeutic-grade, certified organic products. Our facilities in Aerocity, Dwarka, and Vasant Kunj are maintained to hospital-grade standards with third-party audits.",
+    desc: "From the essential oils we use to the thread count of our linens, every detail matters. We use only therapeutic-grade, certified organic products. Our Mahipalpur premises is maintained to hospital-grade standards, with every room reset between guests.",
   },
   {
     icon: Handshake,
@@ -141,7 +142,7 @@ const PILLARS = [
   {
     icon: Trophy,
     title: "Continuous Excellence",
-    desc: "Our therapists undergo continuous education and training. We invest in advanced techniques, premium product upgrades, and facility improvements every year. Excellence is not a destination — it is an ongoing practice across all our Delhi NCR locations.",
+    desc: "Our therapists undergo continuous education and training. We invest in advanced techniques, premium product upgrades, and facility improvements every year. Excellence is not a destination — it is an ongoing practice, reviewed every year.",
   },
   {
     icon: Heart,
@@ -182,7 +183,7 @@ const AUDIENCES = [
   {
     icon: House,
     title: "For Dwarka Sector Residents",
-    desc: "Dwarka's best-kept wellness secret. Our Dwarka location serves sectors 6-24 with the same premium quality treatments. Special weekday discounts for Dwarka residents.",
+    desc: "A straight run east down the Dwarka Link Road brings sectors 6–24 to our door in about fifteen minutes. Free parking on site, and weekday evenings are the quietest time to come.",
   },
   {
     icon: PlaneTakeoff,
@@ -216,83 +217,39 @@ const CERTIFICATIONS = [
   "Ayurvedic Specialist",
 ];
 
-const KEYWORDS = [
-  "spa in Mahipalpur",
-  "spa in Aerocity",
-  "spa in Dwarka",
-  "spa in Vasant Kunj",
-  "spa near IGI Airport",
-  "Russian spa Mahipalpur",
-  "best spa Delhi NCR",
-  "luxury spa Aerocity",
-  "massage centre Dwarka",
-  "body spa Vasant Kunj",
-  "Russian banya near me",
-  "spa near Delhi Airport",
-  "wellness centre Mahipalpur",
-  "couples spa Aerocity",
-  "deep tissue massage Dwarka",
-  "Swedish massage Mahipalpur",
-  "Thai spa Vasant Kunj",
-  "hot stone therapy near me",
-  "aromatherapy spa Delhi",
-  "reflexology centre",
-  "sports massage Mahipalpur",
-  "pregnancy spa Aerocity",
-  "spa for men Dwarka",
-  "ladies spa Vasant Kunj",
-  "24 hour spa near airport",
-  "massage near Aerocity hotels",
-  "spa near JW Marriott Aerocity",
-  "spa near Pullman Aerocity",
-  "Russian Spa Centre",
-];
 
 const WHATSAPP_MESSAGE =
   "Hello! I'd like to know more about Russian Spa Centre and book an appointment.";
-const WHATSAPP_URL = `https://wa.me/919999999999?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+const WHATSAPP_URL = waLink(WHATSAPP_MESSAGE);
 
-function openWhatsApp() {
-  window.open(WHATSAPP_URL, "_blank");
-}
-
-const JSON_LD = {
-  "@context": "https://schema.org",
-  "@type": "AboutPage",
-  name: "About Russian Spa Centre",
-  url: "https://russianspacenter.com/about/",
-  description:
-    "Discover why Russian Spa Centre is the most trusted spa in Mahipalpur, Aerocity, Dwarka, Vasant Kunj & near IGI Airport. 10+ years of excellence, certified therapists, authentic Russian Banya, open 24/7.",
-  mainEntity: {
-    "@type": "LocalBusiness",
-    name: "Russian Spa Centre Mahipalpur",
-    image: "https://russianspacenter.com/logo.png",
-    telephone: "+91 9999999999",
-    priceRange: "₹2000-₹15000",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Office No. 118, Defence Enclave, Adjoining Aerocity, Mahipalpur",
-      addressLocality: "New Delhi",
-      postalCode: "110037",
-      addressCountry: "IN",
-    },
-    url: "https://russianspacenter.com",
-    openingHours: "Mo-Su 00:00-23:59",
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "350",
-    },
-    areaServed: ["Mahipalpur", "Aerocity", "Dwarka", "Vasant Kunj", "IGI Airport, New Delhi"],
+/**
+ * This page used to redeclare the whole business as a second `LocalBusiness`
+ * node with a slightly different name, a missing logo file and its own rating.
+ * Two business nodes on one site compete to be *the* entity, so it now points
+ * at the canonical `@id` published by the root layout instead of repeating it.
+ */
+const JSON_LD = [
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": `${SITE_URL}/about/#webpage`,
+    name: "About Russian Spa Centre",
+    url: `${SITE_URL}/about/`,
+    description:
+      "Who runs Russian Spa Centre in Mahipalpur, how the therapists are trained, the hygiene routine between guests, and what to expect on a first visit.",
+    isPartOf: { "@id": `${SITE_URL}/#website` },
+    about: { "@id": `${SITE_URL}/#business` },
+    primaryImageOfPage: `${SITE_URL}/og-image.png`,
   },
-};
+  breadcrumbLd("About Us", "/about/"),
+];
 
 export default function About() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(...JSON_LD) }}
       />
 
       {/* HERO */}
@@ -302,7 +259,7 @@ export default function About() {
         <div className={styles.heroContent}>
           <div className={styles.heroBadge}>Our Story</div>
           <h1>
-            Delhi NCR&apos;s Most <em>Trusted</em> Wellness Destination
+            About <em>Russian Spa Centre</em>, Mahipalpur
           </h1>
           <p className={styles.heroText}>
             For over a decade, Russian Spa Centre has been the premier choice for authentic spa experiences across
@@ -323,6 +280,8 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      <Breadcrumb items={[{ label: "About Us" }]} />
 
       {/* OUR MISSION */}
       <section className={styles.missionSection}>
@@ -395,7 +354,7 @@ export default function About() {
               <div className={styles.timelineNum}>
                 <m.icon size={24} strokeWidth={1.8} />
               </div>
-              <h4>{m.title}</h4>
+              <h3>{m.title}</h3>
               <p>{m.desc}</p>
             </div>
           ))}
@@ -404,12 +363,12 @@ export default function About() {
 
       {/* LOCATIONS */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
-        <div className="section-label">Our Locations</div>
+        <div className="section-label">Areas We Serve</div>
         <h2 className="section-title" style={{ marginBottom: 0 }}>
           Serving <em>All of Delhi NCR</em>
         </h2>
         <p style={{ color: "var(--muted)", marginTop: "16px", marginBottom: "40px" }}>
-          Conveniently located near major Delhi NCR hubs — always within 15-20 minutes from wherever you are.
+          We run one premises, in Mahipalpur. These are the areas it sits closest to, with typical off-peak drive times.
         </p>
         <div className={styles.grid3}>
           {LOCATIONS.map((loc, i) => (
@@ -425,7 +384,7 @@ export default function About() {
               </div>
               {loc.link ? (
                 <a href={loc.link} className={styles.locationLink}>
-                  Learn More <ArrowRight size={13} />
+                  Learn More<span className="vh"> about {loc.name}</span> <ArrowRight size={13} />
                 </a>
               ) : null}
             </div>
@@ -441,8 +400,8 @@ export default function About() {
         </h2>
         <div className={styles.grid3col}>
           {PILLARS.map((p, i) => (
-            <div key={i} className={styles.iconCard} style={{ textAlign: "left" }}>
-              <div className={styles.iconChip} style={{ margin: "0 0 16px" }}>
+            <div key={i} className={styles.iconCard} data-reveal data-reveal-delay={(i % 3) * 90}>
+              <div className={styles.iconChip}>
                 <p.icon size={22} strokeWidth={1.8} />
               </div>
               <h3>{p.title}</h3>
@@ -506,7 +465,7 @@ export default function About() {
                 <item.icon size={20} strokeWidth={1.8} />
               </div>
               <div>
-                <h4>{item.title}</h4>
+                <h3>{item.title}</h3>
                 <p>{item.desc}</p>
               </div>
             </div>
@@ -525,8 +484,8 @@ export default function About() {
           </h2>
           <p>
             Our therapists hold certifications from recognized institutions across Russia, Thailand, Sweden, and
-            India. Continuous education is mandatory — because the best in wellness never stop learning. All
-            therapists are available across our Mahipalpur, Aerocity, Dwarka, and Vasant Kunj locations.
+            India. Continuous education is mandatory — because the best in wellness never stop learning. Every
+            therapist works from our single premises at Defence Enclave, Mahipalpur.
           </p>
           <div className={styles.certifications}>
             {CERTIFICATIONS.map((c, i) => (
@@ -540,9 +499,9 @@ export default function About() {
             <a href="/services/" className="btn-gold">
               View Our Services
             </a>
-            <button type="button" className="btn-outline" onClick={openWhatsApp}>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-outline">
               Book via WhatsApp
-            </button>
+            </a>
           </div>
         </div>
       </section>
@@ -554,76 +513,67 @@ export default function About() {
           What Makes Us <em>Special</em>
         </h2>
         <div className={styles.valuesGrid}>
-          <div className={styles.valueCard}>
+          <div className={styles.valueCard} data-reveal>
             <div className={styles.valueIconChip}>
               <Users size={22} strokeWidth={1.8} />
             </div>
-            <h4>Client First Philosophy</h4>
+            <h3>Client First Philosophy</h3>
             <p>Every decision we make starts with one question: &ldquo;What&apos;s best for our client?&rdquo; This client-first approach drives our service standards, pricing, and facility upgrades across all locations.</p>
           </div>
-          <div className={styles.valueCard}>
+          <div className={styles.valueCard} data-reveal>
             <div className={styles.valueIconChip}>
               <Star size={22} strokeWidth={1.8} />
             </div>
-            <h4>Excellence Without Compromise</h4>
+            <h3>Excellence Without Compromise</h3>
             <p>We never cut corners on quality. From the oils we use to the training our therapists receive, we maintain uncompromising standards. Our 350+ 5-star reviews reflect this commitment.</p>
           </div>
-          <div className={styles.valueCard}>
+          <div className={styles.valueCard} data-reveal>
             <div className={styles.valueIconChip}>
               <Shield size={22} strokeWidth={1.8} />
             </div>
-            <h4>Trust &amp; Transparency</h4>
+            <h3>Trust &amp; Transparency</h3>
             <p>No hidden fees, no upselling pressure, no surprises. Our transparent pricing and honest communication have made us the most trusted spa brand in Mahipalpur, Aerocity, and Dwarka.</p>
           </div>
-          <div className={styles.valueCard}>
+          <div className={styles.valueCard} data-reveal>
             <div className={styles.valueIconChip}>
               <Heart size={22} strokeWidth={1.8} />
             </div>
-            <h4>Community First</h4>
+            <h3>Community First</h3>
             <p>We believe in giving back. Through corporate wellness programs, senior citizen discounts, and community health initiatives, we make wellness accessible to everyone in Delhi NCR.</p>
           </div>
-          <div className={styles.valueCard}>
+          <div className={styles.valueCard} data-reveal>
             <div className={styles.valueIconChip}>
               <Coffee size={22} strokeWidth={1.8} />
             </div>
-            <h4>Warm Hospitality</h4>
+            <h3>Warm Hospitality</h3>
             <p>From the moment you walk in, you&apos;re treated like family. Complimentary tea, warm smiles, and genuine care — because wellness begins with feeling welcome.</p>
           </div>
-          <div className={styles.valueCard}>
+          <div className={styles.valueCard} data-reveal>
             <div className={styles.valueIconChip}>
               <CalendarDays size={22} strokeWidth={1.8} />
             </div>
-            <h4>Always Open, Always Ready</h4>
+            <h3>Always Open, Always Ready</h3>
             <p>24 hours a day, 7 days a week, 365 days a year. Whether it&apos;s 3 AM after a late flight or 6 AM before a busy day — we&apos;re here for you.</p>
           </div>
         </div>
       </section>
 
-      {/* KEYWORD CLOUD for SEO */}
-      <div className={styles.keywordCloud}>
-        {KEYWORDS.map((kw, i) => (
-          <span key={i} className={styles.keywordPill}>
-            {kw}
-          </span>
-        ))}
-      </div>
-
       {/* CTA */}
+      <AlsoVisit path={"/about/"} />
+
       <section className={styles.ctaSection}>
-        <div className="section-label" style={{ background: "rgba(255,255,255,0.1)", borderColor: "rgba(255,255,255,0.22)", color: "#fff" }}>
-          Book Your Experience
-        </div>
+        <p className="section-label">Book Your Experience</p>
         <h2>
           Experience the <em>Russian Spa Centre</em> Difference
         </h2>
-        <p>Visit our spa in Mahipalpur, Aerocity, Dwarka, or Vasant Kunj. Open 24/7 — we&apos;re always here for you.</p>
+        <p>One premises, in Mahipalpur — ten minutes from IGI Airport and open every hour of the year.</p>
         <div className={styles.ctaActions}>
-          <a href="tel:+919999999999" className="btn-gold">
-            <PhoneCall size={15} /> Call Now: +91 9999999999
+          <a href={`tel:${PHONE_E164}`} className="btn-gold">
+            <PhoneCall size={15} /> Call Now: {PHONE_DISPLAY}
           </a>
-          <button type="button" className="btn-outline" onClick={openWhatsApp}>
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-outline">
             <Sparkles size={15} /> Book via WhatsApp
-          </button>
+          </a>
         </div>
         <p className={styles.ctaCallLine}>
           <Sparkles size={14} /> 15% off for first-time visitors

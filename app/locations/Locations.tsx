@@ -1,5 +1,3 @@
-"use client";
-
 import {
   MapPin,
   Navigation,
@@ -23,8 +21,10 @@ import {
   PHONE_E164,
   waLink,
 } from "../lib/site";
+import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { AREAS, HOTELS, LOCATION_FAQS } from "./data";
+import Img from "../components/Img";
 
 /** The area count is derived so adding a catchment to `AREAS` cannot leave a stale number here. */
 const HERO_STATS = [
@@ -52,20 +52,6 @@ const TRANSPORT = [
   },
 ];
 
-const KEYWORDS = [
-  "spa in Mahipalpur",
-  "spa in Aerocity",
-  "spa near IGI Airport",
-  "spa in Dwarka",
-  "spa in Vasant Kunj",
-  "massage near Aerocity hotels",
-  "spa near JW Marriott Aerocity",
-  "spa near Pullman Aerocity",
-  "24 hour spa near Delhi Airport",
-  "Russian spa Delhi NCR",
-  "spa near Mahipalpur Metro",
-  "massage centre South Delhi",
-];
 
 export default function Locations() {
   return (
@@ -216,7 +202,7 @@ export default function Locations() {
         <div className={styles.tileGrid}>
           {HOTELS.map((hotel, i) => (
             <div key={hotel.name} className={styles.tile} data-reveal data-reveal-delay={(i % 3) * 90}>
-              <img
+              <Img
                 src={hotel.img}
                 alt={`${hotel.name} — guests reach Russian Spa Centre Mahipalpur in ${hotel.walk}`}
                 width={hotel.width}
@@ -318,6 +304,8 @@ export default function Locations() {
       </section>
 
       {/* CTA */}
+      <AlsoVisit path={"/locations/"} />
+
       <section className={styles.ctaSection}>
         <div data-reveal>
           <p className={`section-label ${styles.ctaLabel}`}>Coming to See Us</p>
@@ -341,15 +329,6 @@ export default function Locations() {
           </p>
         </div>
       </section>
-
-      {/* KEYWORDS */}
-      <div className={styles.keywordCloud} style={{ paddingTop: "clamp(48px, 7vw, 84px)" }}>
-        {KEYWORDS.map((kw) => (
-          <span key={kw} className={styles.keywordPill}>
-            {kw}
-          </span>
-        ))}
-      </div>
     </>
   );
 }

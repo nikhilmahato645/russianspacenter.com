@@ -6,11 +6,9 @@ import { LOCAL_BUSINESS, SITE_URL, breadcrumbLd, faqLd, jsonLd } from "../lib/si
 const PATH = "/gallery/";
 
 export const metadata: Metadata = {
-  title: "Spa Photo Gallery | Russian Banya, Treatment Rooms & Interiors in Mahipalpur | Russian Spa Centre",
+  title: "Photo Gallery | Russian Spa Centre, Mahipalpur",
   description:
-    "See real photos of our spa in Mahipalpur — authentic Russian Banya, private treatment rooms, couples suites, relaxation lounge and changing areas. No stock imagery. 10 minutes from IGI Airport, open 24/7.",
-  keywords:
-    "spa photos Mahipalpur, Russian Banya pictures Delhi, massage centre images Aerocity, spa interior Mahipalpur, couples spa room Delhi, spa near IGI Airport photos, treatment room pictures Delhi NCR, luxury spa gallery Mahipalpur, Russian Spa Centre photos",
+    "Photographs taken inside our Mahipalpur premises — the Russian Banya, private treatment rooms, couples suites and the relaxation lounge.",
   robots: {
     index: true,
     follow: true,

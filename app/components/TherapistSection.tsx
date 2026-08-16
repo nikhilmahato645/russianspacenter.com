@@ -1,7 +1,7 @@
-"use client";
-
-import { Clock } from "lucide-react";
+import { Clock, Phone, MessageCircle } from "lucide-react";
 import styles from "./Therapists.module.css";
+import Img from "./Img";
+import { PHONE_E164, waLink } from "../lib/site";
 
 type Therapist = {
   img: string;
@@ -279,7 +279,7 @@ function TherapistCard({ therapist, delay }: { therapist: Therapist; delay: numb
   return (
     <article className={styles.card} data-reveal data-reveal-delay={delay}>
       <div className={styles.photo}>
-        <img
+        <Img
           src={therapist.img}
           alt={`${therapist.name} — ${therapist.tag} therapist at Russian Spa Centre Mahipalpur`}
           loading="lazy"
@@ -305,17 +305,20 @@ function TherapistCard({ therapist, delay }: { therapist: Therapist; delay: numb
           <Clock size={13} strokeWidth={2} /> {therapist.duration} session
         </div>
 
+        {/* Vector icons rather than the raster call/WhatsApp badges: with 25
+            therapists these two glyphs were repeated 50 times, costing ~150 DOM
+            nodes. They also inherit the button colour, which the PNGs could not. */}
         <div className={styles.actions}>
-          <a href="tel:+919999999999" className={`${styles.btn} ${styles.btnCall}`}>
-            <img src="/call_whatshap/call.png" alt="" aria-hidden="true" /> Call
+          <a href={`tel:${PHONE_E164}`} className={`${styles.btn} ${styles.btnCall}`}>
+            <Phone size={14} strokeWidth={2.2} /> Call
           </a>
           <a
-            href={`https://wa.me/919999999999?text=Hi%2C%20I%20want%20to%20book%20a%20session%20with%20${therapist.name}`}
+            href={waLink(`Hi, I want to book a session with ${therapist.name} at Russian Spa Centre.`)}
             target="_blank"
             rel="noopener noreferrer"
             className={`${styles.btn} ${styles.btnWa}`}
           >
-            <img src="/call_whatshap/whatshap.png" alt="" aria-hidden="true" /> WhatsApp
+            <MessageCircle size={14} strokeWidth={2.2} /> WhatsApp
           </a>
         </div>
       </div>

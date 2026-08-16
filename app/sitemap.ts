@@ -3,7 +3,9 @@ import type { MetadataRoute } from "next";
 
 export const dynamic = "force-static";
 
-const BASE_URL = "https://russianspacenter.com";
+import { SITE_URL } from "./lib/site";
+
+const BASE_URL = SITE_URL;
 
 /**
  * Every route is written out in full rather than generated from a list, so the

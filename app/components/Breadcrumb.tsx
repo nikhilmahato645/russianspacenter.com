@@ -5,32 +5,33 @@ export default function Breadcrumb({ items }: { items: { label: string; href?: s
     <nav className="breadcrumb" aria-label="Breadcrumb">
       <style>{`
         .breadcrumb {
-          background: var(--surface);
+          background: var(--bg-warm);
           border-bottom: 1px solid var(--line);
         }
         .breadcrumb-inner {
           max-width: var(--shell);
           margin: 0 auto;
-          padding: 12px var(--pad);
+          padding: 13px var(--pad);
           display: flex;
           align-items: center;
-          gap: 6px;
+          gap: 4px;
           flex-wrap: wrap;
-          font-size: 0.78rem;
+          font-size: 0.74rem;
+          letter-spacing: 0.04em;
         }
         .breadcrumb-inner a {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          padding: 4px 10px;
-          border-radius: var(--r-full);
-          color: var(--brand-600);
-          font-weight: 500;
-          transition: background 0.2s var(--ease), color 0.2s var(--ease);
+          gap: 7px;
+          padding: 4px 8px;
+          border-radius: var(--r-xs);
+          color: var(--brand-700);
+          font-weight: 600;
+          transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
         }
-        .breadcrumb-inner a:hover { background: var(--brand-50); color: var(--brand-700); }
-        .breadcrumb-inner span.current { color: var(--muted); padding: 4px 6px; }
-        .breadcrumb-inner svg.sep { color: var(--line-strong); flex-shrink: 0; }
+        .breadcrumb-inner a:hover { background: var(--gold-pale); color: var(--brand-800); }
+        .breadcrumb-inner span.current { color: var(--muted); padding: 4px 8px; }
+        .breadcrumb-inner svg.sep { color: var(--line-2); flex-shrink: 0; }
       `}</style>
       <div className="breadcrumb-inner">
         <a href="/">

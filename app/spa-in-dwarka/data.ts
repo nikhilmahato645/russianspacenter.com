@@ -17,7 +17,7 @@ export const DWARKA: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa8.jpg",
   heroBadge: "Serving Dwarka Sectors 1–24 · Open 24 Hours",
-  h1: { lead: "Spa in", em: "Dwarka", tail: "— Russian Banya 15 Minutes Away" },
+  h1: { lead: "Best Spa & Body Massage for", em: "Dwarka" },
   heroText: [
     "Dwarka is full of single-room massage centres and short on actual spas — and everything inside the sectors takes its last booking by ten. We are fifteen minutes east at Defence Enclave, Mahipalpur, straight down the Dwarka Link Road, and we do not close at any hour of any day.",
     "Authentic Russian Banya with birch venik, deep tissue work by certified therapists, private couples suites and free parking that costs nothing and has no time limit — which is more than the Sector 14 mall basement can say on a Saturday night.",
@@ -225,31 +225,13 @@ export const DWARKA: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Dwarka",
-    "best spa in Dwarka",
-    "body massage in Dwarka",
-    "massage centre near Dwarka",
-    "Russian spa near Dwarka",
-    "spa near Dwarka Sector 10",
-    "spa near Dwarka Sector 21 Metro",
-    "24 hour spa Dwarka",
-    "couples spa near Dwarka",
-    "deep tissue massage Dwarka",
-    "spa near Vegas Mall Dwarka",
-    "Russian Banya West Delhi",
-    "full body massage Dwarka",
-    "night spa Dwarka",
-  ],
 
   geo: { lat: 28.5921, lng: 77.046 },
 
   seo: {
-    title: "Spa in Dwarka | Russian Banya & Body Massage 15 Min Away | Open 24/7",
+    title: "Best Spa & Body Massage for Dwarka | Russian Spa Centre",
     description:
-      "Spa for Dwarka — 15 minutes from Sector 10 down the Link Road and open 24 hours. Authentic Russian Banya, deep tissue massage, private couples suites, certified therapists, free parking. No night surcharge. Call +91 9999999999",
-    keywords:
-      "spa in Dwarka, best spa in Dwarka, body massage in Dwarka, massage centre Dwarka, Russian spa near Dwarka, spa near Dwarka Sector 10, spa near Dwarka Sector 12, spa in Dwarka Sector 6, spa near Dwarka Metro, 24 hour spa Dwarka, couples spa Dwarka, deep tissue massage Dwarka, full body massage Dwarka, spa near Vegas Mall, spa near Dwarka Mor, spa near Palam, spa near Janakpuri, luxury spa West Delhi, aromatherapy massage Dwarka, hot stone massage Dwarka, Russian Banya West Delhi, spa for men Dwarka, ladies spa Dwarka, night spa Dwarka",
+      "Fifteen minutes from Dwarka Sector 10 down the Link Road, open 24 hours. Body massage, deep tissue, Russian Banya and free on-site parking.",
     ogTitle: "Spa in Dwarka | Russian Banya & Massage, 15 Minutes Away",
     ogDescription:
       "Dwarka's sector markets shut by ten. We don't. Authentic Russian Banya, deep tissue and couples suites, 15 minutes down the Link Road, open all night.",

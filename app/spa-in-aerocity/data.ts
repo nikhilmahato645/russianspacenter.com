@@ -13,7 +13,7 @@ export const AEROCITY: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa12.jpg",
   heroBadge: "Five Minutes From The Aerocity Hotel Strip",
-  h1: { lead: "Spa in", em: "Aerocity", tail: "— Open All Night, Five Minutes Away" },
+  h1: { lead: "Best Spa & Body Massage in", em: "Aerocity" },
   heroText: [
     "Aerocity runs on a different clock. Guests check in at 2 AM off a delayed long-haul, close a deal over dinner at 11 PM, and fly out before the city wakes up. Hotel spas close at 8 or 9 PM — we do not close at all.",
     "We are across NH-8 at Defence Enclave, five minutes from the JW Marriott, Pullman, Andaz, Roseate House, Holiday Inn and Aloft. On bookings of ninety minutes or more we send a car for you, so the whole trip is door to door.",
@@ -220,31 +220,13 @@ export const AEROCITY: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Aerocity",
-    "massage in Aerocity",
-    "spa near JW Marriott Aerocity",
-    "spa near Pullman Aerocity",
-    "spa near Andaz Delhi",
-    "24 hour spa Aerocity",
-    "late night massage Delhi",
-    "hotel spa Aerocity alternative",
-    "airport layover massage Delhi",
-    "corporate massage Aerocity",
-    "jet lag massage Delhi",
-    "Russian Banya near Aerocity",
-    "spa near Worldmark Aerocity",
-    "deep tissue massage Aerocity",
-  ],
 
   geo: { lat: 28.5535, lng: 77.12 },
 
   seo: {
-    title: "Spa in Aerocity | 24 Hour Massage 5 Min From Hotels | Free Pickup | Russian Spa Centre",
+    title: "Best Spa & Body Massage in Aerocity | Russian Spa Centre",
     description:
-      "Spa in Aerocity open 24 hours — 5 minutes from JW Marriott, Pullman, Andaz & Roseate. Free hotel pickup on 90-min bookings, long-haul recovery massage, late-night Russian Banya, layover express. Call +91 9999999999",
-    keywords:
-      "spa in Aerocity, massage in Aerocity, spa near JW Marriott Aerocity, spa near Pullman Aerocity, spa near Andaz Delhi, 24 hour spa Aerocity, late night massage Delhi, airport layover massage Delhi, corporate massage Aerocity, jet lag massage Delhi, Russian Banya near Aerocity, spa near Worldmark Aerocity, deep tissue massage Aerocity, hotel pickup spa Delhi",
+      "Open 24 hours, five minutes across NH-8 from the Aerocity hotels. Body massage, Russian Banya and free pickup on bookings of 90 minutes or longer.",
     ogTitle: "Spa in Aerocity | Open 24 Hours, 5 Minutes From Your Hotel",
     ogDescription:
       "Hotel spas close at 9 PM. We don't. Free pickup from Aerocity hotels on 90-minute bookings, long-haul recovery massage and late-night Russian Banya.",

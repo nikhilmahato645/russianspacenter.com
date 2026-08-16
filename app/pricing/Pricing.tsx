@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Check,
   Clock,
@@ -15,6 +13,7 @@ import {
 import Breadcrumb from "../components/Breadcrumb";
 import FaqAccordion from "../components/FaqAccordion";
 import { PHONE_DISPLAY, PHONE_E164, waLink } from "../lib/site";
+import AlsoVisit from "../components/AlsoVisit";
 import styles from "../styles/page.module.css";
 import { OFFERS, PACKAGES, PRICING_FAQS, RATE_GROUPS } from "./data";
 
@@ -32,20 +31,6 @@ const PROMISES = [
   { icon: ShieldCheck, title: "No Upsell Pressure", desc: "Your therapist recommends, never pushes. Add-ons are always optional." },
 ];
 
-const KEYWORDS = [
-  "spa price list Mahipalpur",
-  "body massage price in Delhi",
-  "Russian Banya price Delhi",
-  "massage cost near IGI Airport",
-  "couples spa package price Delhi",
-  "cheap spa in Mahipalpur",
-  "affordable massage Aerocity",
-  "spa membership Delhi NCR",
-  "full body massage rate Dwarka",
-  "deep tissue massage price Delhi",
-  "spa offers Mahipalpur",
-  "massage discount Vasant Kunj",
-];
 
 const inr = (n: number) => `₹${n.toLocaleString("en-IN")}`;
 
@@ -272,6 +257,8 @@ export default function Pricing() {
       </section>
 
       {/* CTA */}
+      <AlsoVisit path={"/pricing/"} />
+
       <section className={styles.ctaSection}>
         <div data-reveal>
           <p className={`section-label ${styles.ctaLabel}`}>Book Your Slot</p>
@@ -295,15 +282,6 @@ export default function Pricing() {
           </p>
         </div>
       </section>
-
-      {/* KEYWORDS */}
-      <div className={styles.keywordCloud} style={{ paddingTop: "clamp(48px, 7vw, 84px)" }}>
-        {KEYWORDS.map((kw) => (
-          <span key={kw} className={styles.keywordPill}>
-            {kw}
-          </span>
-        ))}
-      </div>
     </>
   );
 }

@@ -6,11 +6,9 @@ import { LOCAL_BUSINESS, SITE_URL, breadcrumbLd, faqLd, jsonLd } from "../lib/si
 const PATH = "/contact/";
 
 export const metadata: Metadata = {
-  title: "Contact Russian Spa Centre Mahipalpur | Phone, Address & Directions | Open 24/7",
+  title: "Contact & Booking | Russian Spa Centre, Mahipalpur",
   description:
-    "Contact Russian Spa Centre — Office No. 118, Defence Enclave, Mahipalpur, New Delhi 110037. Call +91 9999999999 any hour, WhatsApp booking, free parking, 10 minutes from IGI Airport Terminal 3.",
-  keywords:
-    "contact spa in Mahipalpur, spa phone number Delhi, book massage near IGI Airport, spa address Mahipalpur, 24 hour spa contact Delhi, massage booking Aerocity, spa near Aerocity hotels, spa directions Mahipalpur, WhatsApp spa booking Delhi, spa near Dwarka contact, Russian Spa Centre contact number",
+    "Office No. 118, Defence Enclave, Mahipalpur, New Delhi 110037. Call or WhatsApp any hour to book a body massage or spa treatment. Free parking.",
   robots: {
     index: true,
     follow: true,
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact Russian Spa Centre Mahipalpur | Open 24/7",
     description:
-      "Defence Enclave, Mahipalpur, New Delhi 110037. Call +91 9999999999 at any hour. Free parking, 10 min from IGI Airport T3.",
+      "Defence Enclave, Mahipalpur, New Delhi 110037. Call +91 8929979542 at any hour. Free parking, 10 min from IGI Airport T3.",
     url: `${SITE_URL}${PATH}`,
     siteName: "Russian Spa Centre",
     images: [
@@ -43,7 +41,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Contact Russian Spa Centre Mahipalpur",
-    description: "Call +91 9999999999 any hour. Defence Enclave, Mahipalpur — 10 min from IGI Airport.",
+    description: "Call +91 8929979542 any hour. Defence Enclave, Mahipalpur — 10 min from IGI Airport.",
     images: [`${SITE_URL}/og-image.png`],
   },
   alternates: {

@@ -1,118 +1,180 @@
 /* ============================================================================
-   THEME TOKENS — the only file you edit to restyle the whole site.
+   DESIGN TOKENS — "IVORY & CYPRESS"
+   A calm, botanical luxury system for a premium spa brand.
 
-   HOW TO CHANGE THE ENTIRE SITE COLOR:
-   Change --brand-rgb below. That's it. One line.
-   Every shade, tint, border, shadow, gradient, dark section and page
-   background is derived from it, so nothing else needs touching.
+   Palette intent
+     Ivory / cream      → page canvas, breathing room
+     Cypress (sage)     → the primary brand colour: CTAs, active states, links
+     Warm gold          → the accent: rules, ornaments, small caps, dark-section
+                          highlights. Never a large fill.
+     Deep charcoal-moss → dark sections, footer, editorial bands
 
-     --brand-rgb: 17 17 17;      <- black & white  (current)
-     --brand-rgb: 15 122 90;     <- emerald
-     --brand-rgb: 14 116 144;    <- teal
-     --brand-rgb: 30 58 138;     <- midnight blue
-     --brand-rgb: 180 83 9;      <- terracotta
-     --brand-rgb: 102 53 190;    <- violet
-
-   Values are space-separated R G B (no commas, no #), so they can be
-   reused with any alpha via rgb(var(--brand-rgb) / 0.2).
-
-   ACCESSIBILITY NOTE: pick a base dark enough that white text on it clears
-   4.5:1. Black #111111 = 18.9:1 on white — the safest possible choice.
+   Everything downstream reads from here. Never hardcode a colour in a
+   component file — add a token instead.
    ========================================================================== */
 
 :root {
-  /* ---------- THE KNOBS ---------- */
-  --brand-rgb: 17 17 17;       /* primary — drives the entire UI */
-  --accent-rgb: 64 64 64;      /* secondary — stars, badges, premium touches */
-  --ink-rgb: 10 10 10;         /* text & shadow base */
+  /* ---------------- CORE HUES (space separated for rgb(... / alpha)) ------- */
+  --cypress-rgb: 62 82 69;      /* primary brand */
+  --gold-rgb: 176 141 79;       /* accent */
+  --ink-rgb: 26 25 22;          /* text & shadow base */
+  --ivory-rgb: 246 242 234;     /* page canvas */
+  --moss-rgb: 18 25 20;         /* dark surfaces */
 
-  /* ---------- DERIVED BRAND RAMP ----------
-     color-mix in oklab keeps steps perceptually even, so the ramp stays
-     balanced no matter which base color you drop in above. */
-  --brand: rgb(var(--brand-rgb));
-  --brand-50: color-mix(in oklab, var(--brand) 8%, white);
-  --brand-100: color-mix(in oklab, var(--brand) 16%, white);
-  --brand-200: color-mix(in oklab, var(--brand) 30%, white);
-  --brand-300: color-mix(in oklab, var(--brand) 50%, white);
-  --brand-400: color-mix(in oklab, var(--brand) 72%, white);
-  --brand-500: color-mix(in oklab, var(--brand) 88%, white);
+  /* ---------------- BRAND RAMP -------------------------------------------- */
+  --brand: rgb(var(--cypress-rgb));
+  --brand-50: color-mix(in oklab, var(--brand) 6%, rgb(var(--ivory-rgb)));
+  --brand-100: color-mix(in oklab, var(--brand) 12%, rgb(var(--ivory-rgb)));
+  --brand-200: color-mix(in oklab, var(--brand) 24%, white);
+  --brand-300: color-mix(in oklab, var(--brand) 42%, white);
+  --brand-400: color-mix(in oklab, var(--brand) 66%, white);
+  --brand-500: color-mix(in oklab, var(--brand) 86%, white);
   --brand-600: var(--brand);
-  --brand-700: color-mix(in oklab, var(--brand) 78%, black);
+  --brand-700: color-mix(in oklab, var(--brand) 82%, black);
+  --brand-800: color-mix(in oklab, var(--brand) 58%, black);
   --brand-900: color-mix(in oklab, var(--brand) 34%, black);
 
-  /* ---------- ACCENT ---------- */
-  --accent: rgb(var(--accent-rgb));
-  --accent-soft: color-mix(in oklab, var(--accent) 22%, white);
+  /* ---------------- ACCENT (gold) ----------------------------------------- */
+  --gold: rgb(var(--gold-rgb));
+  --gold-bright: color-mix(in oklab, var(--gold) 74%, white);
+  --gold-soft: color-mix(in oklab, var(--gold) 26%, rgb(var(--ivory-rgb)));
+  --gold-pale: color-mix(in oklab, var(--gold) 12%, rgb(var(--ivory-rgb)));
+  /* Passes contrast for small text on ivory — use this, not --gold, for copy. */
+  --gold-ink: color-mix(in oklab, var(--gold) 66%, black);
 
-  /* ---------- INK & SURFACES (brand-tinted neutrals) ---------- */
+  /* ---------------- INK & SURFACES ---------------------------------------- */
   --ink: rgb(var(--ink-rgb));
-  --ink-2: color-mix(in oklab, var(--ink) 78%, white);
-  --muted: color-mix(in oklab, var(--ink) 52%, white);
-  --bg: color-mix(in oklab, var(--brand) 3%, white);
-  --surface: #ffffff;
-  --surface-2: color-mix(in oklab, var(--brand) 7%, white);
-  --line: rgb(var(--brand-rgb) / 0.13);
-  --line-strong: rgb(var(--brand-rgb) / 0.26);
+  --ink-2: color-mix(in oklab, var(--ink) 82%, white);
+  /* Secondary copy also carries small-caps labels at 9–11px, so it is mixed
+     dark enough to clear 4.5:1 on the ivory canvas rather than tuned by eye. */
+  --muted: color-mix(in oklab, var(--ink) 70%, white);
+  --muted-2: color-mix(in oklab, var(--ink) 58%, white);
 
-  /* ---------- SEMANTIC (intentionally NOT brand-derived) ---------- */
-  --success: #2e9e5b;
-  --danger: #d64545;
+  --bg: rgb(var(--ivory-rgb));
+  --bg-warm: color-mix(in oklab, rgb(var(--ivory-rgb)) 88%, var(--gold));
+  --surface: #fffdf9;
+  --surface-2: color-mix(in oklab, rgb(var(--ivory-rgb)) 82%, var(--brand));
+  --surface-sunk: color-mix(in oklab, rgb(var(--ivory-rgb)) 92%, var(--ink));
+
+  --dark: rgb(var(--moss-rgb));
+  --dark-2: color-mix(in oklab, rgb(var(--moss-rgb)) 88%, var(--brand));
+  --dark-3: color-mix(in oklab, rgb(var(--moss-rgb)) 70%, var(--brand));
+
+  --line: rgb(var(--ink-rgb) / 0.1);
+  --line-2: rgb(var(--ink-rgb) / 0.16);
+  --line-strong: rgb(var(--cypress-rgb) / 0.32);
+  --line-gold: rgb(var(--gold-rgb) / 0.34);
+  --line-light: rgb(255 255 255 / 0.14);
+
+  /* ---------------- SEMANTIC ---------------------------------------------- */
+  --success: #3f7d54;
+  --danger: #b4453c;
   --whatsapp: #25d366;
-  --whatsapp-dark: #1bb255;
-  --whatsapp-light: #34e07a;
+  --whatsapp-dark: #128c46;
 
-  /* ---------- GRADIENTS ---------- */
-  --grad-brand: linear-gradient(135deg, var(--brand-400) 0%, var(--brand-600) 52%, var(--brand-700) 100%);
-  --grad-brand-soft: linear-gradient(135deg, var(--brand-50) 0%, var(--brand-100) 100%);
-  --grad-ink: linear-gradient(140deg,
-      color-mix(in oklab, var(--brand) 26%, #080a09) 0%,
-      color-mix(in oklab, var(--brand) 14%, #080a09) 55%,
-      color-mix(in oklab, var(--brand) 32%, #080a09) 100%);
-  --grad-whatsapp: linear-gradient(135deg, var(--whatsapp-light) 0%, var(--whatsapp) 55%, var(--whatsapp-dark) 100%);
+  /* ---------------- GRADIENTS (restrained by design) ---------------------- */
+  --grad-brand: linear-gradient(168deg, var(--brand-500) 0%, var(--brand-700) 100%);
+  --grad-dark: linear-gradient(165deg, var(--dark-3) 0%, var(--dark) 62%, var(--dark-2) 100%);
+  --grad-gold-rule: linear-gradient(90deg, transparent, var(--gold) 22%, var(--gold) 78%, transparent);
+  --grad-scrim: linear-gradient(
+    100deg,
+    rgb(var(--moss-rgb) / 0.9) 0%,
+    rgb(var(--moss-rgb) / 0.74) 42%,
+    rgb(var(--moss-rgb) / 0.36) 100%
+  );
 
-  /* ---------- RADII ---------- */
-  --r-xs: 10px;
-  --r-sm: 14px;
-  --r-md: 18px;
-  --r-lg: 24px;
-  --r-xl: 32px;
-  --r-full: 999px;
+  /* ---------------- RADII -------------------------------------------------- */
+  --r-xs: 6px;
+  --r-sm: 10px;
+  --r-md: 14px;
+  --r-lg: 20px;
+  --r-xl: 28px;
+  --r-2xl: 40px;
+  --r-pill: 999px;
+  /* Buttons: rounded, deliberately not pill-shaped. */
+  --r-btn: 10px;
 
-  /* ---------- ELEVATION ---------- */
-  --sh-1: 0 1px 2px rgb(var(--ink-rgb) / 0.04), 0 2px 10px rgb(var(--brand-rgb) / 0.05);
-  --sh-2: 0 4px 12px rgb(var(--ink-rgb) / 0.05), 0 12px 28px rgb(var(--brand-rgb) / 0.09);
-  --sh-3: 0 10px 24px rgb(var(--ink-rgb) / 0.07), 0 24px 60px rgb(var(--brand-rgb) / 0.14);
-  --sh-brand: 0 8px 22px rgb(var(--brand-rgb) / 0.3), inset 0 1px 0 rgb(255 255 255 / 0.22);
-  --sh-brand-hover: 0 14px 34px rgb(var(--brand-rgb) / 0.4), inset 0 1px 0 rgb(255 255 255 / 0.3);
+  /* ---------------- ELEVATION (warm, low, wide) ---------------------------- */
+  --sh-1: 0 1px 2px rgb(var(--ink-rgb) / 0.04), 0 4px 14px rgb(var(--ink-rgb) / 0.045);
+  --sh-2: 0 2px 6px rgb(var(--ink-rgb) / 0.045), 0 16px 36px rgb(var(--ink-rgb) / 0.075);
+  --sh-3: 0 6px 14px rgb(var(--ink-rgb) / 0.06), 0 32px 68px rgb(var(--ink-rgb) / 0.12);
+  --sh-lift: 0 10px 20px rgb(var(--ink-rgb) / 0.07), 0 40px 80px rgb(var(--ink-rgb) / 0.14);
+  --sh-brand: 0 6px 16px rgb(var(--cypress-rgb) / 0.24);
+  --sh-brand-hover: 0 12px 30px rgb(var(--cypress-rgb) / 0.34);
+  --sh-inset-line: inset 0 0 0 1px rgb(var(--ink-rgb) / 0.06);
 
-  /* ---------- MOTION ---------- */
-  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  /* ---------------- MOTION ------------------------------------------------- */
+  /* Slow, smooth, elegant — nothing snappy, nothing bouncy. */
+  --ease: cubic-bezier(0.32, 0.72, 0.28, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0.05, 0.36, 1);
+  --dur-fast: 0.24s;
+  --dur: 0.45s;
+  --dur-slow: 0.8s;
+  --dur-reveal: 1.05s;
 
-  /* ---------- LAYOUT ---------- */
+  /* ---------------- LAYOUT ------------------------------------------------- */
   --nav-h: 66px;
+  /* Header utility strip. Zero on phones, where the address and hours have no
+     room; the desktop values are set in the breakpoints below. */
+  --topbar-h: 0px;
   --shell: 1240px;
+  --shell-narrow: 820px;
   --pad: 20px;
+  --section-y: 68px;
 
-  /* ---------- TYPE ---------- */
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Jost', system-ui, -apple-system, sans-serif;
+  /* ---------------- TYPE --------------------------------------------------- */
+  /* Both families are self-hosted via next/font (see layout.tsx), which
+     publishes them as these CSS variables on <html>. */
+  --font-display: var(--font-fraunces), Georgia, 'Times New Roman', serif;
+  --font-body: var(--font-manrope), system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* ---------- LEGACY ALIASES ----------
-     Older page modules were written against these names. Keeping them
-     mapped means those files inherit the theme without being rewritten. */
-  --gold: var(--brand-600);
-  --gold-light: var(--brand-400);
-  --gold-pale: var(--brand-50);
-  --dark: var(--bg);
-  --dark-2: var(--surface);
-  --dark-3: var(--surface);
-  --cream: var(--ink);
+  --t-hero: clamp(2.15rem, 1.35rem + 3.1vw, 3.35rem);
+  --t-h2: clamp(1.85rem, 1.25rem + 2.7vw, 3.05rem);
+  --t-h3: clamp(1.15rem, 1rem + 0.7vw, 1.42rem);
+  --t-lead: clamp(0.98rem, 0.94rem + 0.28vw, 1.09rem);
+  --t-body: 1rem;
+  --t-sm: 0.875rem;
+  --t-xs: 0.78rem;
+  --t-label: 0.68rem;
+
+  --lh-tight: 1.08;
+  --lh-heading: 1.16;
+  --lh-body: 1.78;
+  --ls-label: 0.26em;
+  --ls-btn: 0.12em;
+
+  /* ---------------- LEGACY ALIASES ----------------------------------------
+     A few older blocks (breadcrumbs, keyword pills, inline styles inside page
+     components) were written against the previous token names. Mapping them
+     here means those call sites inherit the new system unchanged. */
+  --gold-light: var(--gold-bright);
+  --cream: var(--bg);
+  --accent: var(--gold);
+  --accent-soft: var(--gold-soft);
+  --brand-rgb: var(--cypress-rgb);
+  --accent-rgb: var(--gold-rgb);
+  --grad-ink: var(--grad-dark);
+  --grad-brand-soft: linear-gradient(135deg, var(--brand-50), var(--brand-100));
+}
+
+@media (min-width: 700px) {
+  :root {
+    --pad: 32px;
+    --section-y: 84px;
+  }
 }
 
 @media (min-width: 900px) {
   :root {
-    --nav-h: 78px;
-    --pad: 40px;
+    --topbar-h: 38px;
+  }
+}
+
+@media (min-width: 1000px) {
+  :root {
+    --nav-h: 82px;
+    --pad: 48px;
+    --section-y: 112px;
   }
 }

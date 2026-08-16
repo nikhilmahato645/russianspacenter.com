@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import {
   Flame,
   WavesLadder,
@@ -14,7 +11,6 @@ import {
   SprayCan,
   Star,
   Quote,
-  ChevronDown,
   PhoneCall,
   MapPin,
   MessageCircle,
@@ -24,17 +20,64 @@ import {
   Plane,
   ShieldCheck,
   Navigation,
+  Images,
 } from "lucide-react";
 import TherapistSection from "../components/TherapistSection";
+import FaqAccordion from "../components/FaqAccordion";
+import AlsoVisit from "../components/AlsoVisit";
 import styles from "./Home.module.css";
+import Img from "../components/Img";
+import { DIRECTIONS_URL, PHONE_DISPLAY, PHONE_E164, waLink } from "../lib/site";
 
 const SERVICES = [
-  { icon: Flame, name: "Russian Banya Experience", desc: "Traditional Venik Treatment" },
-  { icon: WavesLadder, name: "Swedish Massage", desc: "Classic Relaxation Therapy" },
-  { icon: Dumbbell, name: "Deep Tissue Massage", desc: "Chronic Pain Relief" },
-  { icon: Hand, name: "Thai Massage", desc: "Ancient Energy Work" },
-  { icon: Flower2, name: "Aromatherapy Massage", desc: "Healing Essential Oils" },
-  { icon: HeartHandshake, name: "Couples Spa Package", desc: "Romantic Experience for Two" },
+  {
+    icon: Flame,
+    name: "Russian Banya Experience",
+    desc: "Wood-fired steam and the traditional birch venik treatment, followed by a cold plunge and rest cycle.",
+    img: "/home_images/mahipalpurspa1.jpg",
+    duration: "90 min",
+    price: "From ₹3,500",
+  },
+  {
+    icon: WavesLadder,
+    name: "Swedish Massage",
+    desc: "Long, flowing strokes at medium pressure — the classic way to switch off completely.",
+    img: "/home_images/mahipalpurspa3.jpg",
+    duration: "60 min",
+    price: "From ₹2,800",
+  },
+  {
+    icon: Dumbbell,
+    name: "Deep Tissue Massage",
+    desc: "Firm, targeted work into chronic tension: stiff shoulders, lower back, desk-job posture.",
+    img: "/home_images/mahipalpurspa5.jpg",
+    duration: "60 min",
+    price: "From ₹3,400",
+  },
+  {
+    icon: Hand,
+    name: "Thai Massage",
+    desc: "Oil-free acupressure and assisted stretching along the body's energy lines.",
+    img: "/home_images/mahipalpurspa6.jpg",
+    duration: "75 min",
+    price: "From ₹3,200",
+  },
+  {
+    icon: Flower2,
+    name: "Aromatherapy Massage",
+    desc: "A gentle full-body massage with an essential-oil blend chosen for you after a short consultation.",
+    img: "/home_images/mahipalpurspa8.jpg",
+    duration: "60 min",
+    price: "From ₹3,000",
+  },
+  {
+    icon: HeartHandshake,
+    name: "Couples Spa Package",
+    desc: "A private suite for two with synchronised therapists, aromatherapy setup and full Banya access.",
+    img: "/home_images/mahipalpurspa9.jpg",
+    duration: "120 min",
+    price: "From ₹7,500",
+  },
 ];
 
 const WHY_CHOOSE_US = [
@@ -57,6 +100,15 @@ const HERO_STATS = [
   { value: "4.8★", label: "350+ Reviews" },
 ];
 
+const GALLERY_PREVIEW = [
+  { src: "/home_images/mahipalpurspa4.jpg", alt: "Treatment room at Russian Spa Centre, Mahipalpur" },
+  { src: "/home_images/mahipalpurspa7.jpg", alt: "Massage table prepared with fresh linen" },
+  { src: "/home_images/mahipalpurspa10.jpg", alt: "Relaxation lounge at our Mahipalpur spa" },
+  { src: "/home_images/mahipalpurspa11.jpg", alt: "Russian Banya steam room interior" },
+  { src: "/home_images/mahipalpurspa12.jpg", alt: "Aromatherapy oils and spa amenities" },
+  { src: "/home_images/mahipalpurspa16.jpg", alt: "Private couples suite at Russian Spa Centre" },
+];
+
 const TESTIMONIALS = [
   { text: "Best spa near Delhi Airport! The Russian Banya is absolutely authentic. Clean, professional, and therapists are highly skilled.", author: "Vikram Singh", location: "Mahipalpur Resident" },
   { text: "Perfect location near the airport. I booked a deep tissue massage during my layover and it was exactly what I needed after a long flight.", author: "James Mitchell", location: "Business Traveler" },
@@ -72,54 +124,87 @@ const FAQS = [
 
 const WHATSAPP_MESSAGE =
   "Hello! I want to book an appointment at Russian Spa Centre. Please share more details about services and availability.";
-const WHATSAPP_URL = `https://wa.me/919999999999?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
-const DIRECTIONS_URL =
-  "https://www.google.com/maps/dir/?api=1&destination=Defence+Enclave,+Mahipalpur,+New+Delhi+110037";
+const WHATSAPP_URL = waLink(WHATSAPP_MESSAGE);
 
 export default function Home() {
-  const [openFaq, setOpenFaq] = useState<number | null>(0);
-
   return (
     <>
-      {/* HERO */}
+      {/* HERO — editorial split: copy left, framed imagery right */}
       <section className={styles.hero}>
-        <div className={styles.heroImage} />
-        <div className={styles.heroScrim} />
-        <div className={styles.heroContent}>
-          <div className={styles.heroBadge}>
-            <Sparkles size={13} /> Delhi NCR&apos;s Premier Spa
-          </div>
-          <h1>
-            Russian Spa Centre
-            <br />
-            <em>Luxury Spa &amp; Massage</em> Near IGI Airport
-          </h1>
-          <p className={styles.heroText}>
-            Experience authentic Russian Banya, luxury body massage, and world-class wellness therapies in
-            Mahipalpur, Delhi NCR. Certified therapists, private rooms, open 24/7.
-          </p>
-          <div className={styles.heroActions}>
-            <a href="tel:+919999999999" className="btn-gold">
-              <PhoneCall size={15} /> Call +91 9999999999
-            </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn-outline">
-              <MessageCircle size={15} /> Book via WhatsApp
-            </a>
+        <div className={styles.heroGlow} aria-hidden="true" />
+        <div className={styles.heroInner}>
+          <div className={styles.heroCopy}>
+            <p className={styles.heroBadge}>
+              <Sparkles size={13} /> Delhi NCR&apos;s Premier Spa
+            </p>
+            {/* The <em> is display:block, so the explicit spaces are what keep
+                this from being extracted as one run-together string by
+                crawlers and screen readers. */}
+            <h1>
+              Russian Spa Centre{" "}
+              <em>Premium Spa &amp; Body Massage</em>{" "}
+              in Mahipalpur
+            </h1>
+            <div className={styles.heroRule} aria-hidden="true" />
+            <p className={styles.heroText}>
+              Authentic Russian Banya, luxury body massage and world-class wellness therapies in Mahipalpur,
+              Delhi NCR. Certified therapists, private rooms, open around the clock.
+            </p>
+            <div className={styles.heroActions}>
+              <a href={`tel:${PHONE_E164}`} className="btn-gold">
+                <PhoneCall size={15} /> Book Appointment
+              </a>
+              <a href="#services" className="btn-outline">
+                Explore Treatments <ArrowRight size={15} />
+              </a>
+            </div>
+
+            <div className={styles.heroStats}>
+              {HERO_STATS.map((stat) => (
+                <div key={stat.label} className={styles.heroStat}>
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className={styles.heroStats}>
-            {HERO_STATS.map((stat) => (
-              <div key={stat.label} className={styles.heroStat}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </div>
-            ))}
+          <div className={styles.heroArt}>
+            <figure className={styles.heroFrame}>
+              <Img
+                src="/spa-in-mahipalpur/image1.jpg"
+                alt="Candlelit treatment room at Russian Spa Centre, Mahipalpur"
+                width={720}
+                height={900}
+                fetchPriority="high"
+                decoding="async"
+              />
+            </figure>
+            <figure className={styles.heroFrameAlt}>
+              <Img
+                src="/home_images/mahipalpurspa13.jpg"
+                alt="Therapist preparing warm oils before a massage session"
+                width={320}
+                height={320}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div className={styles.heroRating}>
+              <span className={styles.heroRatingStars} aria-hidden="true">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} size={12} fill="currentColor" strokeWidth={0} />
+                ))}
+              </span>
+              <strong>4.8 / 5</strong>
+              <span>350+ Guest Reviews</span>
+            </div>
           </div>
         </div>
 
-        <a href="#services" className={styles.scrollCue} aria-label="Scroll to services">
+        <a href="#services" className={styles.scrollCue} aria-label="Scroll to treatments">
           Scroll
-          <ArrowDown size={16} />
+          <ArrowDown size={15} />
         </a>
       </section>
 
@@ -128,7 +213,7 @@ export default function Home() {
         <div className={styles.trustInner}>
           {TRUST_POINTS.map((point, i) => (
             <div key={point.label} className={styles.trustItem} data-reveal data-reveal-delay={i * 70}>
-              <point.icon size={18} strokeWidth={1.9} />
+              <point.icon size={17} strokeWidth={1.8} />
               {point.label}
             </div>
           ))}
@@ -138,11 +223,28 @@ export default function Home() {
       {/* THERAPISTS */}
       <TherapistSection />
 
-      {/* INTRO / ABOUT TEASER */}
+      {/* ABOUT TEASER */}
       <section className={styles.section}>
         <div className={styles.twoCol}>
-          <div data-reveal="left">
-            <div className="section-label">Who We Are</div>
+          <div className={styles.aboutMedia} data-reveal="left">
+            <figure className={styles.aboutFrame}>
+              <Img
+                src="/home_images/mayraspa_home1.avif"
+                alt="Warm, softly lit interior of Russian Spa Centre in Mahipalpur"
+                width={720}
+                height={960}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+            <div className={styles.aboutSeal} aria-hidden="true">
+              <strong>10+</strong>
+              <span>Years of Care</span>
+            </div>
+          </div>
+
+          <div data-reveal="right">
+            <p className="section-label">Who We Are</p>
             <h2 className="section-title">
               A Sanctuary of <em>Authentic Wellness</em>
             </h2>
@@ -155,52 +257,69 @@ export default function Home() {
               Every therapist is internationally certified, every room is private, and every visit follows
               hospital-grade hygiene standards. We&apos;re open 24/7, so wellness is always within reach.
             </p>
-            <a href="/about/" className="btn-outline" style={{ marginTop: "8px" }}>
-              About Us <ArrowRight size={15} />
-            </a>
-          </div>
-          <div className={styles.featureGrid}>
-            {WHY_CHOOSE_US.slice(0, 4).map((item, i) => (
-              <div key={i} className={styles.iconCard} data-reveal data-reveal-delay={i * 90}>
-                <div className={styles.iconChip}>
-                  <item.icon size={22} strokeWidth={1.8} />
+            <div className={styles.featureGrid} style={{ marginTop: "28px" }}>
+              {WHY_CHOOSE_US.slice(0, 2).map((item, i) => (
+                <div key={item.title} className={styles.iconCard} data-reveal data-reveal-delay={i * 90}>
+                  <div className={styles.iconChip}>
+                    <item.icon size={21} strokeWidth={1.7} />
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
                 </div>
-                <h3>{item.title}</h3>
-                <p>{item.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+            <a href="/about/" className="btn-outline" style={{ marginTop: "28px" }}>
+              Our Story <ArrowRight size={15} />
+            </a>
           </div>
         </div>
       </section>
 
-      {/* SERVICES TEASER */}
+      {/* TREATMENTS */}
       <section id="services" className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.sectionCenterHead} data-reveal>
-          <div className="section-label">Our Treatments</div>
+          <p className="section-label">Our Treatments</p>
           <h2 className="section-title">
             Signature <em>Spa Services</em>
           </h2>
           <p>
-            From authentic Russian Banya to specialized therapeutic massage — every treatment is customized to your
+            From authentic Russian Banya to specialised therapeutic massage — every treatment is customised to your
             body by certified therapists.
           </p>
         </div>
         <div className={styles.servicesGrid}>
           {SERVICES.map((s, i) => (
-            <div key={i} className={styles.serviceCard} data-reveal data-reveal-delay={(i % 3) * 90}>
-              <div className={styles.serviceIconChip}>
-                <s.icon size={20} strokeWidth={1.8} />
+            <article key={s.name} className={styles.serviceCard} data-reveal data-reveal-delay={(i % 3) * 90}>
+              <div className={styles.serviceMedia}>
+                <Img
+                  src={s.img}
+                  alt={`${s.name} at Russian Spa Centre, Mahipalpur`}
+                  width={640}
+                  height={440}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className={styles.servicePrice}>{s.price}</span>
+                <span className={styles.serviceIconChip}>
+                  <s.icon size={20} strokeWidth={1.7} />
+                </span>
               </div>
-              <div>
-                <h4>{s.name}</h4>
+              <div className={styles.serviceBody}>
+                <h3>{s.name}</h3>
                 <p>{s.desc}</p>
+                <div className={styles.serviceMeta}>
+                  <Clock size={13} strokeWidth={2} /> {s.duration}
+                  <a href="/services/" className={styles.serviceLink}>
+                    Details<span className="vh"> of {s.name}</span> <ArrowRight size={13} />
+                  </a>
+                </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
-        <div style={{ textAlign: "center", marginTop: "40px" }} data-reveal>
-          <a href="/spa-in-mahipalpur/" className="btn-gold">
-            View All Services <ArrowRight size={15} />
+        <div style={{ textAlign: "center", marginTop: "44px" }} data-reveal>
+          <a href="/services/" className="btn-gold">
+            View All Treatments <ArrowRight size={15} />
           </a>
         </div>
       </section>
@@ -211,9 +330,9 @@ export default function Home() {
           <div className={styles.locationBannerImage} />
           <div className={styles.locationBannerScrim} />
           <div className={styles.locationBannerContent}>
-            <div className={styles.bannerLabel}>
+            <p className={styles.bannerLabel}>
               <MapPin size={13} /> Featured Location
-            </div>
+            </p>
             <h2>
               Best <em>Spa in Mahipalpur</em>
             </h2>
@@ -231,16 +350,16 @@ export default function Home() {
       {/* WHY CHOOSE US */}
       <section className={styles.section} style={{ paddingTop: 0 }}>
         <div className={styles.sectionCenterHead} data-reveal>
-          <div className="section-label">Why Choose Us</div>
+          <p className="section-label">Why Choose Us</p>
           <h2 className="section-title">
             What Makes Us <em>Delhi NCR&apos;s Best</em>
           </h2>
         </div>
         <div className={styles.grid4}>
           {WHY_CHOOSE_US.map((item, i) => (
-            <div key={i} className={styles.iconCard} data-reveal data-reveal-delay={i * 90}>
+            <div key={item.title} className={styles.iconCard} data-reveal data-reveal-delay={i * 110}>
               <div className={styles.iconChip}>
-                <item.icon size={22} strokeWidth={1.8} />
+                <item.icon size={21} strokeWidth={1.7} />
               </div>
               <h3>{item.title}</h3>
               <p>{item.desc}</p>
@@ -249,26 +368,56 @@ export default function Home() {
         </div>
       </section>
 
+      {/* GALLERY PREVIEW */}
+      <section className={styles.section} style={{ paddingTop: 0 }}>
+        <div className={styles.sectionCenterHead} data-reveal>
+          <p className="section-label">Inside the Spa</p>
+          <h2 className="section-title">
+            A Look <em>Around</em>
+          </h2>
+          <p>Every photograph is taken inside our Defence Enclave premises — no stock imagery, no borrowed interiors.</p>
+        </div>
+        <div className={styles.galleryStrip}>
+          {GALLERY_PREVIEW.map((shot, i) => (
+            <a
+              key={shot.src}
+              href="/gallery/"
+              className={styles.galleryTile}
+              aria-label={`${shot.alt} — open the full photo gallery`}
+              data-reveal
+              data-reveal-delay={(i % 4) * 70}
+            >
+              <Img src={shot.src} alt={shot.alt} width={520} height={520} loading="lazy" decoding="async" />
+            </a>
+          ))}
+        </div>
+        <div style={{ textAlign: "center", marginTop: "36px" }} data-reveal>
+          <a href="/gallery/" className="btn-outline">
+            <Images size={15} /> View Full Gallery
+          </a>
+        </div>
+      </section>
+
       {/* TESTIMONIALS */}
       <section className={styles.testimonials}>
         <div className={styles.testimonialsInner}>
           <div className={styles.sectionCenterHead} data-reveal>
-            <div className="section-label">Client Love</div>
+            <p className="section-label">Client Love</p>
             <h2 className="section-title">
               What Our <em>Clients</em> Say
             </h2>
           </div>
           <div className={styles.testiGrid}>
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className={styles.testiCard} data-reveal data-reveal-delay={i * 110}>
-                <Quote size={26} strokeWidth={1.5} />
-                <div className={styles.stars}>
+              <figure key={t.author} className={styles.testiCard} data-reveal data-reveal-delay={i * 130}>
+                <Quote size={26} strokeWidth={1.4} />
+                <div className={styles.stars} role="img" aria-label="Rated 5 out of 5">
                   {Array.from({ length: 5 }).map((_, s) => (
-                    <Star key={s} size={14} fill="currentColor" strokeWidth={0} />
+                    <Star key={s} size={13} fill="currentColor" strokeWidth={0} />
                   ))}
                 </div>
                 <blockquote>&ldquo;{t.text}&rdquo;</blockquote>
-                <div className={styles.testiAuthor}>
+                <figcaption className={styles.testiAuthor}>
                   <span className={styles.testiAvatar} aria-hidden="true">
                     {t.author.charAt(0)}
                   </span>
@@ -276,8 +425,8 @@ export default function Home() {
                     <strong>{t.author}</strong>
                     <span>{t.location}</span>
                   </span>
-                </div>
-              </div>
+                </figcaption>
+              </figure>
             ))}
           </div>
         </div>
@@ -286,50 +435,21 @@ export default function Home() {
       {/* FAQ */}
       <section className={styles.section}>
         <div className={styles.sectionCenterHead} data-reveal>
-          <div className="section-label">FAQs</div>
+          <p className="section-label">FAQs</p>
           <h2 className="section-title">
             Frequently Asked <em>Questions</em>
           </h2>
         </div>
-        <div className={styles.faqInner}>
-          <div className={styles.faqList}>
-            {FAQS.map((faq, i) => {
-              const isOpen = openFaq === i;
-              return (
-                <div
-                  key={i}
-                  className={`${styles.faqItem} ${isOpen ? styles.faqItemOpen : ""}`}
-                  data-reveal
-                  data-reveal-delay={i * 70}
-                >
-                  <button
-                    type="button"
-                    className={`${styles.faqQuestion} ${isOpen ? styles.faqQuestionOpen : ""}`}
-                    onClick={() => setOpenFaq(isOpen ? null : i)}
-                    aria-expanded={isOpen}
-                  >
-                    {faq.q}
-                    <ChevronDown size={18} strokeWidth={2} />
-                  </button>
-                  <div className={`${styles.faqAnswer} ${isOpen ? styles.faqAnswerOpen : ""}`}>
-                    <div>
-                      <p>{faq.a}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        <FaqAccordion faqs={FAQS} />
       </section>
 
       {/* CTA */}
+      <AlsoVisit path={"/"} />
+
       <section className={styles.ctaSection}>
         <div data-reveal>
-          <div className="section-label" style={{ background: "rgba(255,255,255,0.1)", borderColor: "rgba(255,255,255,0.2)", color: "#fff" }}>
-            Book Your Experience
-          </div>
-          <h2>Ready for the Best Spa Experience?</h2>
+          <p className={`section-label ${styles.ctaLabel}`}>Your Time to Relax</p>
+          <h2>Book Your Wellness Experience</h2>
           <p>Book your appointment now — we&apos;re open 24/7 and always ready to welcome you.</p>
           <div className={styles.ctaActions}>
             <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className={styles.whatsappBtn}>
@@ -337,7 +457,7 @@ export default function Home() {
             </a>
           </div>
           <p className={styles.ctaCallLine}>
-            <PhoneCall size={14} /> Or call us directly: <a href="tel:+919999999999">+91 9999999999</a>
+            <PhoneCall size={14} /> Or call us directly: <a href={`tel:${PHONE_E164}`}>{PHONE_DISPLAY}</a>
           </p>
         </div>
       </section>
@@ -345,6 +465,9 @@ export default function Home() {
       {/* MAP & ADDRESS */}
       <section className={styles.mapSection}>
         <div data-reveal>
+          <p className="section-label" style={{ justifyContent: "center" }}>
+            Find Us
+          </p>
           <h2 className="section-title">
             Visit <em>Russian Spa Centre</em>
           </h2>
@@ -367,7 +490,7 @@ export default function Home() {
           <a href={DIRECTIONS_URL} target="_blank" rel="noopener noreferrer" className="btn-gold">
             <Navigation size={15} /> Get Directions
           </a>
-          <a href="tel:+919999999999" className="btn-outline">
+          <a href={`tel:${PHONE_E164}`} className="btn-outline">
             <PhoneCall size={15} /> Call the Spa
           </a>
         </div>

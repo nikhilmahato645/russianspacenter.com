@@ -16,7 +16,7 @@ export const DELHI: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa2.jpg",
   heroBadge: "Delhi's Russian Banya · Open 24 Hours, 365 Days",
-  h1: { lead: "Spa in", em: "Delhi", tail: "— Authentic Russian Banya, Open All Night" },
+  h1: { lead: "Best Spa & Body Massage in", em: "Delhi" },
   heroText: [
     "Delhi is not short of massage centres. It is short of a real Russian Banya — a wood-lined steam room held between 70 and 90°C, a birch venik worked over the back and legs, a cold plunge and a proper rest cycle. That is what we built the spa around, at Defence Enclave, Mahipalpur, ten minutes from IGI Terminal 3.",
     "One premises, certified therapists, private rooms and couples suites, and a rate card that does not change at 3 AM or on a public holiday. Guests travel to us from South, Central and West Delhi, from Dwarka and Vasant Kunj, and from Gurugram and Noida.",
@@ -230,31 +230,13 @@ export const DELHI: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Delhi",
-    "best spa in Delhi",
-    "body massage in Delhi",
-    "massage centre in Delhi",
-    "Russian spa in Delhi",
-    "Russian Banya Delhi",
-    "24 hour spa in Delhi",
-    "couples spa in Delhi",
-    "deep tissue massage Delhi",
-    "full body massage Delhi",
-    "spa near IGI Airport",
-    "luxury spa Delhi NCR",
-    "spa in South Delhi",
-    "night spa Delhi",
-  ],
 
   geo: { lat: 28.6139, lng: 77.209 },
 
   seo: {
-    title: "Best Spa in Delhi | Authentic Russian Banya & Body Massage | Open 24/7",
+    title: "Best Spa & Body Massage in Delhi | Russian Spa Centre",
     description:
-      "The best spa in Delhi for an authentic Russian Banya with venik, body massage and private couples suites. One premises in Mahipalpur, 10 minutes from IGI Airport, serving all of Delhi NCR. Certified therapists, open 24/7. Call +91 9999999999",
-    keywords:
-      "spa in delhi, best spa in delhi, body massage delhi, massage centre delhi, russian spa delhi, russian banya delhi, luxury spa delhi, full body massage delhi, deep tissue massage delhi, swedish massage delhi, thai spa delhi, aromatherapy massage delhi, couples spa delhi, hot stone therapy delhi, reflexology delhi, ayurvedic massage delhi, sports massage delhi, 24 hour spa delhi, spa near igi airport delhi, spa in south delhi, spa in west delhi, spa in central delhi, spa for men delhi, ladies spa delhi, best massage centre in delhi ncr, night spa delhi",
+      "Authentic Russian Banya with venik, full body massage and private couples suites. One premises in Mahipalpur, ten minutes from IGI Airport, open 24/7.",
     ogTitle: "Best Spa in Delhi | Authentic Russian Banya, Open 24 Hours",
     ogDescription:
       "Delhi's genuine Russian Banya — venik treatment, cold plunge, private couples suites and certified therapists. One premises in Mahipalpur, ten minutes from IGI Airport.",

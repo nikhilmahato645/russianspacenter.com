@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Plane,
   BedDouble,
@@ -34,6 +32,7 @@ import {
   Navigation,
   ArrowRight,
 } from "lucide-react";
+import AlsoVisit from "./AlsoVisit";
 import Breadcrumb from "./Breadcrumb";
 import FaqAccordion from "./FaqAccordion";
 import {
@@ -131,7 +130,6 @@ export default function LocationPage({ content }: { content: LocationContent }) 
     reviews,
     article,
     faqs,
-    keywords,
   } = content;
 
   const related = relatedAreas(path);
@@ -383,7 +381,7 @@ export default function LocationPage({ content }: { content: LocationContent }) 
                 data-reveal-delay={(i % 3) * 90}
               >
                 <Quote size={24} strokeWidth={1.5} className={styles.quoteMark} />
-                <div className={styles.stars} aria-label="Rated 5 out of 5">
+                <div className={styles.stars} role="img" aria-label="Rated 5 out of 5">
                   {Array.from({ length: 5 }).map((_, s) => (
                     <Star key={s} size={13} fill="currentColor" strokeWidth={0} />
                   ))}
@@ -486,6 +484,8 @@ export default function LocationPage({ content }: { content: LocationContent }) 
       </section>
 
       {/* CTA */}
+      <AlsoVisit path={path} />
+
       <section className={styles.ctaSection}>
         <div data-reveal>
           <p className={`section-label ${styles.ctaLabel}`}>Book From {areaName}</p>
@@ -510,14 +510,6 @@ export default function LocationPage({ content }: { content: LocationContent }) 
         </div>
       </section>
 
-      {/* KEYWORDS */}
-      <div className={styles.keywordCloud} style={{ paddingTop: "clamp(48px, 7vw, 84px)" }}>
-        {keywords.map((kw) => (
-          <span key={kw} className={styles.keywordPill}>
-            {kw}
-          </span>
-        ))}
-      </div>
     </>
   );
 }

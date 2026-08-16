@@ -15,7 +15,7 @@ export const HAUZ_KHAS: LocationContent = {
 
   heroImage: "/home_images/mahipalpurspa10.jpg",
   heroBadge: "22 Minutes Down The Outer Ring Road",
-  h1: { lead: "Spa in", em: "Hauz Khas", tail: "— Deep Tissue, Thai & Russian Banya" },
+  h1: { lead: "Best Spa & Body Massage near", em: "Hauz Khas" },
   heroText: [
     "A clean run west along the Outer Ring Road from Hauz Khas Village — past IIT and Munirka, twenty-two minutes off-peak — brings you to Defence Enclave, Mahipalpur. Three signals once you are on the Ring Road, and no NH-8 crawl.",
     "This is the therapeutic end of what we do: deep tissue and Thai work for laptop-locked shoulders, sports recovery for the Deer Park circuit, and an authentic Russian Banya. Open every hour, including long after the Village has emptied out.",
@@ -233,31 +233,13 @@ export const HAUZ_KHAS: LocationContent = {
     },
   ],
 
-  keywords: [
-    "spa in Hauz Khas",
-    "best spa in Hauz Khas",
-    "body massage Hauz Khas",
-    "massage centre near Hauz Khas",
-    "deep tissue massage Hauz Khas",
-    "Thai massage South Delhi",
-    "sports massage near Deer Park",
-    "spa near Hauz Khas Metro",
-    "Russian spa near Hauz Khas",
-    "24 hour massage South Delhi",
-    "spa near IIT Delhi",
-    "spa near SDA Market",
-    "back pain massage Delhi",
-    "night massage Hauz Khas",
-  ],
 
   geo: { lat: 28.5494, lng: 77.2001 },
 
   seo: {
-    title: "Spa in Hauz Khas | Deep Tissue, Thai & Russian Banya | Open 24/7",
+    title: "Spa & Body Massage near Hauz Khas | Russian Spa Centre",
     description:
-      "Spa for Hauz Khas — 22 minutes down the Outer Ring Road, open 24 hours. Deep tissue, Thai and sports recovery massage plus an authentic Russian Banya. Certified therapists, free parking, no night surcharge. Call +91 9999999999",
-    keywords:
-      "spa in Hauz Khas, best spa in Hauz Khas, body massage Hauz Khas, massage centre Hauz Khas, deep tissue massage Hauz Khas, Thai massage Hauz Khas, sports massage near Deer Park, spa near IIT Delhi, spa near Hauz Khas Metro, spa near SDA Market, spa near Aurobindo Market, Russian spa near Hauz Khas, 24 hour spa South Delhi, full body massage Hauz Khas, back pain massage South Delhi, neck and shoulder massage Delhi, Russian Banya South Delhi, spa for men Hauz Khas, ladies spa Hauz Khas, spa near Gulmohar Park, spa near Safdarjung Enclave, night massage Hauz Khas",
+      "Twenty-two minutes down the Outer Ring Road. Deep tissue, Thai and sports recovery massage plus an authentic Russian Banya, open 24 hours.",
     ogTitle: "Spa in Hauz Khas | Deep Tissue, Thai & Banya, 22 Minutes Away",
     ogDescription:
       "Therapeutic deep tissue, Thai stretching and sports recovery, plus an authentic Russian Banya. 22 minutes from Hauz Khas Village, open 24 hours.",

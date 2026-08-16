@@ -6,11 +6,9 @@ import { LOCAL_BUSINESS, SITE_URL, breadcrumbLd, faqLd, jsonLd } from "../lib/si
 const PATH = "/pricing/";
 
 export const metadata: Metadata = {
-  title: "Spa & Massage Price List in Mahipalpur | Rates from ₹2,200 | Russian Spa Centre",
+  title: "Spa & Body Massage Prices in Mahipalpur | Russian Spa Centre",
   description:
-    "Full, transparent spa price list for Mahipalpur & Aerocity — body massage from ₹2,800, Russian Banya ₹3,500, couples suite ₹7,500. Taxes included, no hidden charges, no night surcharge. Call +91 9999999999",
-  keywords:
-    "spa price list Mahipalpur, body massage price in Delhi, Russian Banya price Delhi, massage cost near IGI Airport, couples spa package price Delhi, affordable spa Mahipalpur, massage rates Aerocity, spa membership Delhi NCR, full body massage rate Dwarka, deep tissue massage price Delhi, spa offers Mahipalpur, massage discount Vasant Kunj, 24 hour spa rates Delhi",
+    "Spa and body massage price list for Mahipalpur: massage from ₹2,800, Russian Banya ₹3,500, couples suite ₹7,500. Taxes included, no night surcharge.",
   robots: {
     index: true,
     follow: true,
